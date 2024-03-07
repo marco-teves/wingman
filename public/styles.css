@@ -32,6 +32,28 @@ body::-webkit-scrollbar{
 body::-webkit-scrollbar-thumb{
     background: var(--lenient);
 }
+
+.loadScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(5, 5, 5);
+    color: #d7d7d7;
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 1s, visibility 1s;
+}
+
+.loadScreen--hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
 .stopwatchContainer{
     display: flex;
     flex-direction: column;
@@ -43,7 +65,6 @@ body::-webkit-scrollbar-thumb{
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s;
-
 }
 
 .dropDown{
@@ -80,18 +101,36 @@ body::-webkit-scrollbar-thumb{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 550px;
-    height: 550px;
+    width: 60vh;
+    height: 60vh;
     border-radius: 50%;
     background: var(--lenient);
+}
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+    30% {
+        transform: scale(0.8);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
 }
 
 .middle-circle {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 500px;
+    width: 55vh;
+    height: 55vh;
     border-radius: 50%;
     background-color: #0d0d0d;
 }
@@ -133,20 +172,11 @@ body::-webkit-scrollbar-thumb{
     cursor: pointer;
 }
 /* ------------------------everything to do with drop down menu ------------------------------------------*/
-#closeBtn {
-    width: 50px;
-    height: 25px;
-    border-radius: 5%;
-    background: rgb(17, 17, 17);
-    transition: transform 0.5s, background 0.3s;
-    border: none;
-    fill: aliceblue;
-}
+
 .arrow-drop-down {
     fill: green;
     display: flex;
     justify-content: center;
-   
     z-index: 2;
     position: absolute;
     top: 0;
