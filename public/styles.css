@@ -1,0 +1,227 @@
+:root{
+    --lenient: linear-gradient(#00FF00, #0000ff);
+    --standard: linear-gradient(#FFFD00, #f93a00);
+    --expert: linear-gradient(#FF007E, #FA1F00);
+}
+
+@font-face {
+    font-family: pillove;
+    src: url(assets/pillove.ttf) format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*anything to do with body*/
+
+body {
+    display:flexbox;
+    font-family: 'pillove', Arial, sans-serif;
+    font-size: 16px;
+    height: 100vh;
+    background-color: #0c0c0c;
+}
+
+body::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: var(--lenient);
+}
+
+.info{
+    display: flex;
+    padding-top: 3vh;
+    fill: rgb(90, 90, 90);
+    transition: all 0.4s;
+}
+.info:hover{
+    transform: scale(1.1);
+    fill: white;
+}
+#stopwatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    background: var(--lenient);
+}
+
+.middle-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: #0d0d0d;
+}
+
+#timer {
+    font-family: 'pillove', Arial, sans-serif;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-size: 5em; /* Adjust the font size as needed */
+    margin-top: 20px; /* Add margin for spacing */
+}
+
+.btn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#stop-watch-btn{
+    margin: 0 20px; /* Adjust the margin as needed */
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    background: rgb(218, 218, 218);
+    transition: transform 0.5s, background 0.3s;
+    border: none;
+}
+
+
+#stop-watch-btn:hover{
+    /* background: radial-gradient(#00FF00, #0000ff);
+    */
+    background: rgb(255, 255, 255);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/* ------------------------everything to do with drop down menu ------------------------------------------*/
+#closeBtn {
+    width: 50px;
+    height: 25px;
+    border-radius: 5%;
+    background: rgb(17, 17, 17);
+    transition: transform 0.5s, background 0.3s;
+    border: none;
+    fill: aliceblue;
+}
+.arrow-drop-down{
+    fill: green;
+    display: flex;
+    justify-content: center;
+    padding: 2vh;
+}
+#arrow-ico{
+    transition: all 0.4s;
+}
+#arrow-ico:hover{
+    transform: scale(1.25);
+    fill: #00FF00;
+    cursor: pointer;
+}
+
+.drop-down-menu {
+    position: relative;
+}
+
+.drop-down-menu--hidden{
+    display: none;
+    visibility: hidden;
+}
+
+  
+.sliding-window {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background:rgba(8px);
+    backdrop-filter:blur(10px);
+    z-index: 1;
+}
+  
+.sliding-window.show {
+    height: 100vh; /* Set the desired height of the sliding window */
+}
+
+.logo-and-close{
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh;
+}
+#logo{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    font-style: italic;
+}
+
+.drop-down-main{
+    padding-left: 5vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#workoutBtn, #marathonBtn{  
+    font-style: italic;
+    font-size:20px;
+    font-weight:800;
+    height: 50px;
+    width: 200px;
+    background-color: #0c0c0c;
+    color: aliceblue;
+    border: solid white;
+}
+
+/*----------WORKOUT PLAN-----------*/
+.workout-window {
+    box-sizing: border-box;
+    padding: 10px;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #0e0e0e;
+    height: 80vh;
+    width: 190vh;
+    border: solid white;
+  }
+  
+  #workout-selector {
+    height: 100px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .workoutSummary {
+    align-items: center;
+  }
+  
+  .workoutSummary svg {
+    width: 24px; /* Set a specific width */
+    height: 24px; /* Set a specific height */
+    fill: white;
+  }
+  
+
+.eyes-container {
+    display: flex;  
+}
+
+.eye {
+    width: 50px;
+    height: 140px;
+    color: #00FF00;
+}
+
+
