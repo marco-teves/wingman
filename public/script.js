@@ -4,7 +4,7 @@
 const tenSecWarn= new Audio("assets/10-second-warning.mp3");
 const restWarn = new Audio("assets/restCue.mp3");
 const finishWarn = new Audio("assets/workoutDone.mp3"); // << this is temporary 
-
+const menuOpen = new Audio("assets/menuOpen.mp3");
 // add later : workout id, name, description and second duration
 // list of different workout times (in s)
 //restTime = 2;
@@ -68,34 +68,38 @@ function timerBtnListener() {
   });
 }
 
-function dropDownList() {
-  const arrow = document.getElementById('arrow-ico');
-  const slidingWindow = document.getElementById('slidingWindow');
+document.querySelector("#arrow-ico").addEventListener("click", () => {
+  const arrowIcon = document.querySelector("#arrow-ico");
+  arrowIcon.classList.toggle("arrow-rotated");
+  const stopwatchContainer = document.querySelector(".stopwatchContainer");
+  menuOpen.play();
+  stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
+  document.querySelector(".stopwatchContainer").addEventListener("transitionend", () => {
+    /*setTimeout(() => {
+      document.body.removeChild(stopwatchContainer);
+    }, 100);*/
+  });
+});
 
-  function toggleSlidingWindow(event) {
-    event.stopPropagation();
-    slidingWindow.classList.toggle('show');
+document.querySelector(".dropDownExitBtn").addEventListener("click", () => {
+  const stopwatchContainer = document.querySelector(".stopwatchContainer");
+
+  if (stopwatchContainer.classList.contains("stopwatchContainer--hidden")) {
+    stopwatchContainer.classList.remove("stopwatchContainer--hidden");
+  } else {
+    stopwatchContainer.classList.add("stopwatchContainer--hidden");
   }
 
-  arrow.addEventListener('click', toggleSlidingWindow);
-}
-
-function closeDropDownList() {
-  const ddClose = document.getElementById('closeBtn');
-  const slidingWindow = document.getElementById('slidingWindow');
-
-  ddClose.addEventListener('click', function (event) {
-    event.stopPropagation(); 
-    slidingWindow.classList.remove('show');
+  stopwatchContainer.addEventListener("transitionend", () => {
+    // Add any additional actions when the transition is complete
   });
-}
+});
 
-//function clearPage(){
-//  main.textContent = '';
-//}
 
-//----- INFO BUTTON FUNCTIONS ///
 
-timerBtnListener();
-dropDownList();
-closeDropDownList();
+
+
+
+
+timerBtnListener()
+

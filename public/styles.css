@@ -17,10 +17,11 @@
 /*anything to do with body*/
 
 body {
-    display:flexbox;
+    display:flex;
     font-family: 'pillove', Arial, sans-serif;
     font-size: 16px;
     height: 100vh;
+    width: 100%;
     background-color: #0c0c0c;
 }
 
@@ -31,7 +32,34 @@ body::-webkit-scrollbar{
 body::-webkit-scrollbar-thumb{
     background: var(--lenient);
 }
+.stopwatchContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #0c0c0c;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.5s, visibility 0.5s;
 
+}
+
+.dropDown{
+    position:fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+
+.stopwatchContainer--hidden{
+    opacity: 0;
+    visibility: hidden;
+}
 .info{
     display: flex;
     padding-top: 3vh;
@@ -114,114 +142,61 @@ body::-webkit-scrollbar-thumb{
     border: none;
     fill: aliceblue;
 }
-.arrow-drop-down{
+.arrow-drop-down {
     fill: green;
     display: flex;
     justify-content: center;
-    padding: 2vh;
+   
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
+.arrow-rotated {
+    transform:rotate(180deg); /* Apply the rotation when the class is present */
+}
+
 #arrow-ico{
     transition: all 0.4s;
 }
 #arrow-ico:hover{
-    transform: scale(1.25);
+    transform: rotate(180deg) scale(1.2);
     fill: #00FF00;
     cursor: pointer;
 }
 
-.drop-down-menu {
-    position: relative;
-}
-
-.drop-down-menu--hidden{
-    display: none;
-    visibility: hidden;
-}
-
-  
-.sliding-window {
-    height: 0;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background:rgba(8px);
-    backdrop-filter:blur(10px);
-    z-index: 1;
-}
-  
-.sliding-window.show {
-    height: 100vh; /* Set the desired height of the sliding window */
-}
-
-.logo-and-close{
+.settings{
     display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-}
-#logo{
-    color: rgb(255, 255, 255);
-    font-size: 50px;
-    font-style: italic;
-}
-
-.drop-down-main{
-    padding-left: 5vh;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#workoutBtn, #marathonBtn{  
-    font-style: italic;
-    font-size:20px;
-    font-weight:800;
-    height: 50px;
-    width: 200px;
-    background-color: #0c0c0c;
-    color: aliceblue;
-    border: solid white;
-}
-
-/*----------WORKOUT PLAN-----------*/
-.workout-window {
-    box-sizing: border-box;
-    padding: 10px;
-    color: aliceblue;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #0e0e0e;
-    height: 80vh;
-    width: 190vh;
-    border: solid white;
-  }
-  
-  #workout-selector {
-    height: 100px;
-    width: 200px;
     justify-content: center;
     align-items: center;
-  }
+    width: 100%;
+    height: 100vh;
+    background-color: #d7d7d7;
   
-  .workoutSummary {
+
+}
+.workoutOptions{
+    display: flex;
+    justify-content: center;
     align-items: center;
-  }
-  
-  .workoutSummary svg {
-    width: 24px; /* Set a specific width */
-    height: 24px; /* Set a specific height */
-    fill: white;
-  }
-  
-
-.eyes-container {
-    display: flex;  
+    width: 500px;
+    height: 90vh;
+    outline: #0d0d0d;
+   
+}
+.workoutPlan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 90vh;
+    outline: #0d0d0d;
+   
 }
 
-.eye {
-    width: 50px;
-    height: 140px;
-    color: #00FF00;
-}
+
+
 
 
