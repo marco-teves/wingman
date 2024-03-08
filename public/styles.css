@@ -89,7 +89,7 @@ body::-webkit-scrollbar-thumb{
 }
 .info:hover{
     transform: scale(1.1);
-    fill: white;
+    fill: #d7d7d7;
 }
 #stopwatch {
     display: flex;
@@ -141,7 +141,7 @@ body::-webkit-scrollbar-thumb{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: aliceblue;
+    color: #d7d7d7;
     font-size: 5em; /* Adjust the font size as needed */
     margin-top: 20px; /* Add margin for spacing */
 }
@@ -158,7 +158,7 @@ body::-webkit-scrollbar-thumb{
     width: 200px;
     height: 50px;
     border-radius: 50px;
-    background: rgb(218, 218, 218);
+    background: #d7d7d7;
     transition: transform 0.5s, background 0.3s;
     border: none;
 }
