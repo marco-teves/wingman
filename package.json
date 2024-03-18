@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "express": "^4.18.2",
+    "i": "^0.3.7",
     "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }

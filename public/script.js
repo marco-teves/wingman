@@ -6,15 +6,19 @@ window.addEventListener("DOMContentLoaded", () => {
   const restWarn = new Audio("assets/restCue.mp3");
   const finishWarn = new Audio("assets/workoutDone.mp3"); // << this is temporary 
   const menuOpen = new Audio("assets/menuOpen.mp3");
-  // add later : workout id, name, description and second duration
-  // list of different workout times (in s)
+  
+  
   //restTime = 2;
-  const getReadyTime = 5;
-  let workoutArray = [getReadyTime,10,15,11];
+  // const getReadyTime = 5;
+  let workoutArray = [15,10,15,11];
+
+  //flag to check if the countdown is running
   let isRunning = false;
   const circle = document.querySelector(".circle-outline");
 
 
+
+  // preloader (currently set to 1s to demonstrate)
   setTimeout(function() {
   document.querySelector(".loadScreen").classList.add("loadScreen--hidden");
 
@@ -27,6 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let workoutIndex = 0;
     const timerElem = document.getElementById('timer');
     circle.classList.toggle("pulse")
+
     if (isRunning === false) {
       function countdown() {
         isRunning = true;
@@ -52,6 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
               timerElem.style.color = 'red';
               finishWarn.play();
               isRunning = false;
+              circle.classList.toggle("pulse")
             }
           }
         }, 10);
@@ -65,6 +71,38 @@ window.addEventListener("DOMContentLoaded", () => {
     const formattedTime = Math.max(0, timeInSeconds).toFixed(2);
     return formattedTime;
   }
+
+  function dupeWorkoutItems(workoutNames) {
+    const templateItem = document.getElementById('workoutItemTemplate');
+    const workoutOptions = document.querySelector('.workoutOptions');
+  
+    for (let i = 0; i < workoutNames.length; i++) {
+        const clone = document.importNode(templateItem.content, true);
+        const workoutNameElement = clone.querySelector('#workoutName'); // Select the <p> tag
+        workoutNameElement.textContent = workoutNames[i]; // Set the text content to the workout name
+        workoutOptions.appendChild(clone);
+    }
+  }
+
+  const workoutNames = ["Push-ups", "Sit-ups", "Squats", "Jumping Jacks", "Plank", "Lunges",];
+
+  function dupeWorkoutSlots() {
+    const template = document.getElementById('workoutSlotsTemplate');
+    const workoutPlan = document.querySelector('.workoutPlan');
+  
+    for (let i = 0; i < 6; i++) {
+      const clone = document.importNode(template.content, true);
+      workoutPlan.appendChild(clone);
+    }
+    
+  }
+  
+
+  
+  
+  
+
+
   // Listeners //
   
   function timerBtnListener() {
@@ -79,14 +117,24 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
   
+
+
+
   
-  timerBtnListener()
   
+  timerBtnListener();
+  dupeWorkoutSlots();
+  dupeWorkoutItems(workoutNames);
+  
+
+  //dropdown arrow button to show and hide/show the menu
   document.querySelector("#arrow-ico").addEventListener("click", () => {
     const arrowIcon = document.querySelector("#arrow-ico");
     arrowIcon.classList.toggle("arrow-rotated");
+    
     const stopwatchContainer = document.querySelector(".stopwatchContainer");
     menuOpen.play();
+    
     stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
     document.querySelector(".stopwatchContainer").addEventListener("transitionend", () => {
     });
@@ -104,6 +152,9 @@ window.addEventListener("DOMContentLoaded", () => {
   
   
   
+
+
+
 
 });
 

@@ -5,7 +5,7 @@ const app = express();
 const database = require('./db.js'); 
 
 
-// routes
+
 app.use(express.static('public'));
 
 app.use((req,res) =>{
