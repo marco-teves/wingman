@@ -1,5 +1,5 @@
 // wait for dom to load before doing anything
-window.addEventListener("DOMContentLoaded", () => {
+
 
   // audio samples
   const tenSecWarn= new Audio("assets/10-second-warning.mp3");
@@ -72,7 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return formattedTime;
   }
 
-  function dupeWorkoutItems(workoutNames) {
+  /* function dupeWorkoutItems(workoutNames) {
     const templateItem = document.getElementById('workoutItemTemplate');
     const workoutOptions = document.querySelector('.workoutOptions');
   
@@ -84,9 +84,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const workoutNames = ["Push-ups", "Sit-ups", "Squats", "Jumping Jacks", "Plank", "Lunges",];
+  const workoutNames = ["Push-ups", "Sit-ups", "Squats", "Jumping Jacks", "Plank", "Lunges","Push-ups", "Sit-ups", "Squats", "Jumping Jacks", "Plank", "Lunges",]; */
 
-  function dupeWorkoutSlots() {
+  /* function dupeWorkoutSlots() {
     const template = document.getElementById('workoutSlotsTemplate');
     const workoutPlan = document.querySelector('.workoutPlan');
   
@@ -95,12 +95,18 @@ window.addEventListener("DOMContentLoaded", () => {
       workoutPlan.appendChild(clone);
     }
     
+  } */
+  
+  
+  const draggables = document.querySelectorAll('.draggable');
+  const containers = document.querySelectorAll('.workoutPlan');
+  function drag() {
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', () => {
+      console.log('drag start');
+    });
+  });
   }
-  
-
-  
-  
-  
 
 
   // Listeners //
@@ -118,14 +124,14 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   
 
-
+  
 
   
-  
+  drag();
   timerBtnListener();
-  dupeWorkoutSlots();
-  dupeWorkoutItems(workoutNames);
-  
+  /* dupeWorkoutSlots(); */
+  /* dupeWorkoutItems(workoutNames);
+   */
 
   //dropdown arrow button to show and hide/show the menu
   document.querySelector("#arrow-ico").addEventListener("click", () => {
@@ -156,6 +162,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-});
+
 
 
