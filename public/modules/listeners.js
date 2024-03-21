@@ -1,5 +1,6 @@
 import { startCountdown, isRunning } from './countdown.js';
 import { menuOpen } from './audio.js';
+import { deleteItem } from './draganddrop.js';
 
 
 export function timerBtnListener() {
@@ -17,38 +18,27 @@ export function timerBtnListener() {
 
 export function handleArrowIconClick() {
   const arrowIcon = document.querySelector("#arrow-ico");
-  
+  const stopwatchContainer = document.querySelector(".stopwatchContainer");
+
   arrowIcon.addEventListener('click', function () {
       console.log("Arrow icon clicked");
-      
+
       // Toggle CSS class for rotation
       arrowIcon.classList.toggle("arrow-rotated");
-      
+
+      // Toggle visibility of stopwatch container
+      stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
+
       // Play audio
       menuOpen.play();
-      
-      // Toggle visibility of stopwatch container
-      const stopwatchContainer = document.querySelector(".stopwatchContainer");
-      stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
-      
+
       // Add transitionend event listener if needed
       stopwatchContainer.addEventListener("transitionend", () => {
           // Add transitionend logic here if needed
       });
   });
 }
-  
-export function handleDropDownExitClick() {
-  const stopwatchContainer = document.querySelector(".stopwatchContainer");
-  
-  stopwatchContainer.addEventListener('click', function () {
-      if (stopwatchContainer.classList.contains("stopwatchContainer--hidden")) {
-          stopwatchContainer.classList.remove("stopwatchContainer--hidden");
-      } else {
-          stopwatchContainer.classList.add("stopwatchContainer--hidden");
-      }
-  });
-}
+
 
 export function scrollLeftRight() {
   const options = document.querySelector('.options');
@@ -68,6 +58,10 @@ export function scrollLeftRight() {
           event.preventDefault();
       }
   });
+}
+
+export function deleteBtn(){
+  document.getElementById('erase').addEventListener('click', deleteItem);
 }
 
 

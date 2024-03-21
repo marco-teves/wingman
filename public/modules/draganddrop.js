@@ -1,5 +1,6 @@
 const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
+const maxItemsInPlaylist = 14;
 
 export function handleDragging() {
     draggables.forEach(elem => {
@@ -24,14 +25,30 @@ export function handleDragging() {
         console.log('item dropped!');
         const itemData = event.dataTransfer.getData('text');
         const draggedItem = document.getElementById(itemData);
+        const playlist = document.querySelector('.playlist');
+    
+        // Check if the maximum limit is reached
+        if (playlist.children.length >= maxItemsInPlaylist) {
+            console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
+            return; // Exit the function if limit is reached
+        }
+
         if (draggedItem) {
-            const clone = draggedItem.cloneNode(true);
-            const textContent = clone.textContent.trim();
-            console.log(`Item "${textContent}" dropped!`);
-            dropZone.appendChild(clone);
+            const clone = draggedItem.cloneNode(true); // Clone the dragged item
+           const textContent = clone.textContent.trim(); // Retrieve text content of the clone
+            console.log(`Item "${textContent}" dropped!`); // Log the message with interpolated text content
+           playlist.appendChild(clone);
         } else {
             console.error('Dragged item not found.');
         }
     }
     
+}
+
+export function deleteItem() {
+    const playlist = document.querySelector('.playlist');
+    while (playlist.firstChild) {
+    playlist.removeChild(playlist.firstChild);
+    }
+    console.log('All items deleted from the menu.');
 }

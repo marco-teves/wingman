@@ -227,14 +227,18 @@ body::-webkit-scrollbar-thumb{
     width: 100vw;
     justify-content: center;
     grid-auto-flow: row dense; 
-    grid-template-columns: 1.7fr 1.3fr; 
+    grid-template-columns: 1.3fr 1.7fr; 
     grid-template-rows: 0.5fr  2fr 0.2fr; 
     gap: 0px 0px; 
     grid-template-areas: 
-      "utility options"
-      "utility playlist"
-      "utility difficulty"; 
-  }
+      
+    "options menu"
+    "playlist menu"
+    "utility menu"; 
+
+    /* border-style: solid;
+    border-color: #646464; */
+}
 .playlist { 
     grid-area: playlist; 
     background-color: #212121;
@@ -243,30 +247,54 @@ body::-webkit-scrollbar-thumb{
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
+    border-color: #353535;
+    border-right-style: solid;
 
 }
 .options { 
     grid-area: options; 
     display: flex;
     background-color: #212121;
-    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     overflow-x: auto;
     white-space: nowrap;
     align-items: center;
     user-select: none;
-}
-.difficulty { 
-    grid-area: difficulty; 
-    align-items: center;
-    justify-content: center;
-    background-color: #212121;
+    border-color: #353535;
+    border-right-style: solid;
+    border-top-style: solid;
     
-
 }
 .utility { 
     grid-area: utility; 
-    background-color: #111111;
+    align-items: center;
+    justify-content: center;
+    background-color: #212121;
+    border-bottom-right-radius: 25px;
+    border-color: #353535;
+    border-right-style: solid;
+    border-bottom-style: solid;
 }
+
+.utility button{
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+}
+.menu { 
+    grid-area: menu; 
+    background-color: #111111;
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 5vh;
+}
+
+.menu button{
+    width: 10vh;
+    height: 5vh;
+}
+
 .confirm { 
     grid-area: confirm; 
     background-color: #515151;
@@ -301,19 +329,26 @@ body::-webkit-scrollbar-thumb{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #d7d7d7;
     height: 70%;
     min-width: 200px;
     margin-right: 10px;
     border-radius: 15px;
-    cursor: move;
+
     opacity: 1;
     border-style: solid;
 
     user-select: none;
+    transition: background-color 0.4s;
 }
+.workoutItem:hover{
+    background-color: #abd4b0;
+    cursor: move;
+}
+
 
 
 
