@@ -50,5 +50,25 @@ export function handleDropDownExitClick() {
   });
 }
 
+export function scrollLeftRight() {
+  const options = document.querySelector('.options');
+
+  options.addEventListener('wheel', function(event) {
+      if (event.deltaY !== 0) {
+          // Adjust the scroll amount to make it scroll less per wheel event
+          const scrollAmount = event.deltaY * 3; // You can adjust the multiplier as needed
+
+          // Smoothly scroll horizontally with reduced scroll amount
+          options.scrollTo({
+              left: options.scrollLeft + scrollAmount,
+              behavior: 'smooth' // You can also try 'auto' or 'instant' for different scrolling behaviors
+          });
+
+          // Prevent the default vertical scrolling behavior
+          event.preventDefault();
+      }
+  });
+}
+
 
 
