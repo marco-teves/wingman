@@ -234,7 +234,7 @@ body::-webkit-scrollbar-thumb{
       
     "options menu"
     "playlist menu"
-    "utility menu"; 
+    "utility confirm"; 
 
     /* border-style: solid;
     border-color: #646464; */
@@ -267,8 +267,9 @@ body::-webkit-scrollbar-thumb{
 }
 .utility { 
     grid-area: utility; 
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #212121;
     border-bottom-right-radius: 25px;
     border-color: #353535;
@@ -277,28 +278,72 @@ body::-webkit-scrollbar-thumb{
 }
 
 .utility button{
-    width: 5vh;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 10vh;
     height: 5vh;
-    border-radius: 50%;
+    border-radius: 15px;
+    border: none;
+    background-color: #00c313;
+    align-items: center;
+    transition: all 0.1s;
 }
+
+.utility button:hover{
+    width: 15vh;
+    cursor: pointer;
+}
+
+.utility button:active{
+    width: 10vh;
+    height: 5vh;
+    background-color: #00ff1a;
+}
+
+#browse{
+    width: 50%;
+    margin-left: 15%;
+    margin-right:15%
+}
+
+
+
 .menu { 
     grid-area: menu; 
     background-color: #111111;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    flex-direction: column;
 
-    padding: 5vh;
 }
 
-.menu button{
-    width: 10vh;
+.confirm button{
+    width: 35vh;
     height: 5vh;
+    border-radius: 15px;
+    border: none;
+    background-color: #00c313;
+    font-style: italic;
+    transition: all 0.1s;
+}
+
+.confirm button:active{
+    width: 34vh;
+    height: 4vh;
+    border-radius: 25px;
+    border: none;
+    background-color: #00ff1a;
+    font-style: italic;
 }
 
 .confirm { 
     grid-area: confirm; 
-    background-color: #515151;
-
+    background-color: #ff0000;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .workoutOptions {
@@ -312,7 +357,6 @@ body::-webkit-scrollbar-thumb{
     overflow-y: scroll;
  
 }
-
 
 .options::-webkit-scrollbar,
 .playlist::-webkit-scrollbar {
@@ -349,11 +393,6 @@ body::-webkit-scrollbar-thumb{
     cursor: move;
 }
 
-
-
-
-
-
 .workoutInfo{
     display: flex;
     justify-content: space-evenly;
@@ -363,15 +402,53 @@ body::-webkit-scrollbar-thumb{
     background-color:darkgrey ;
 }
 
-.difficultyOptions{
+.menuOther{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 80%;
+    height: 100%;
+    width: 100%;
+
+    
+
+}
+
+.difficulty{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height:25%;
+    width: 100%;
+    background-color: #212121;
+    border-radius: 15px ;
+}
+
+#difficultySlider{
+    -webkit-appearance: none; 
+    width: 75%;
     height: 50%;
-    background-color: #959595;
-    border-bottom-left-radius: 50rem;
-    border-bottom-right-radius: 50rem;
+    background: #131313;
+    border-radius: 15rem;
+    cursor: e-resize;
+    
+    
+}
+
+#difficultySlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 100px; 
+    background: #a60202;
+
+    border-radius: 50%; 
+    transition : all 0.3s;
+}
+
+#difficultySlider::-webkit-slider-thumb:hover{
+    width: 110px;
+    height: 110px; 
+    background: #c40303;
 }
 
 

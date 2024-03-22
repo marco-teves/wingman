@@ -50,5 +50,5 @@ export function deleteItem() {
     while (playlist.firstChild) {
     playlist.removeChild(playlist.firstChild);
     }
-    console.log('All items deleted from the menu.');
+    console.log('All items deleted from the playlist.');
 }
