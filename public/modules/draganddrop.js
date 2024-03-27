@@ -1,6 +1,9 @@
+import {click} from './audio.js';
+
 const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
 const maxItemsInPlaylist = 14;
+
 
 export function handleDragging() {
     draggables.forEach(elem => {
@@ -50,5 +53,6 @@ export function deleteItem() {
     while (playlist.firstChild) {
     playlist.removeChild(playlist.firstChild);
     }
+    click.play();
     console.log('All items deleted from the playlist.');
 }
