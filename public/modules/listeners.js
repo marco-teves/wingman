@@ -1,20 +1,24 @@
-import { startCountdown, isRunning } from './countdown.js';
+//listeners.js
+
+import { startCountdown, isRunning, updateWorkoutArr } from './countdown.js';
 import { menuOpen } from './audio.js';
 import { deleteItem } from './draganddrop.js';
-
+import { getItemsInPlaylist, exerciseArr } from './getters.js';
 
 export function timerBtnListener() {
     const timerBtn = document.querySelector("#stop-watch-btn");
     
     timerBtn.addEventListener('click', function () {
-      if (isRunning === false) {
-        console.log("Countdown started!");
+      if (isRunning === false && exerciseArr.length > 0) {
+        console.log('countdown', exerciseArr);
+        updateWorkoutArr(); // Update workoutArr before starting countdown
         startCountdown();
       } else {
-        console.log("Countdown is already running!");
+        console.log('no exercises in playlist or countdown already running.');
       }
     });
 }
+
 
 export function handleArrowIconClick() {
   const arrowIcon = document.querySelector("#arrow-ico");
@@ -44,5 +48,9 @@ export function deleteBtn(){
   document.getElementById('erase').addEventListener('click', deleteItem);
 }
 
+export function confirmBtn(){
+  document.getElementById('confirmWorkout').addEventListener('click', getItemsInPlaylist);
+  
+}
 
 

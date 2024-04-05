@@ -2,7 +2,7 @@ import {click} from './audio.js';
 
 const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
-const maxItemsInPlaylist = 14;
+const maxItemsInPlaylist = 5;
 
 
 export function handleDragging() {

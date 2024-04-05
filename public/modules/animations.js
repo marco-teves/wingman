@@ -24,17 +24,21 @@ export function scrollLeftRight() {
 
 export function adjustDifficultySlider() {
     const slider = document.getElementById('difficultySlider');
+    const confirmBtn = document.getElementById('confirmWorkout');
     slider.addEventListener('input', function() {
         click.play();
         const difficultyName = difficultyNames[slider.value];
         if (slider.value === '1') {
             slider.style.setProperty('--thumb-color', 'green');
+            confirmBtn.style.setProperty('--btn-color', 'green');
             console.log("Difficulty level:", difficultyName);
         } else if (slider.value === '2') {
             slider.style.setProperty('--thumb-color', 'yellow');
+            confirmBtn.style.setProperty('--btn-color', 'yellow');
             console.log("Difficulty level:", difficultyName);
         } else if (slider.value === '3') {
             slider.style.setProperty('--thumb-color', 'red');
+            confirmBtn.style.setProperty('--btn-color', 'red');
             console.log("Difficulty level:", difficultyName);
         }
     });

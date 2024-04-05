@@ -2,7 +2,10 @@
 const hints = [
     // workout items info
     { element: document.getElementById('item1'), tooltipText: '10 reps of twisting ur balls, 10 seconds' },
-    { element: document.getElementById('item2'), tooltipText: 'sussyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy' },
+    { element: document.getElementById('item2'), tooltipText: '10s duration' },
+    { element: document.getElementById('item3'), tooltipText: '20s duration' },
+    { element: document.getElementById('item4'), tooltipText: '50s duration' },
+    { element: document.getElementById('item5'), tooltipText: '15s duration' },
 
 
     //utility buttons
@@ -12,6 +15,8 @@ const hints = [
     
     
     { element: document.getElementById('difficultySlider'), tooltipText: 'adjust the difficulty of the workout'},
+
+    { element: document.getElementById('confirmWorkout'), tooltipText: 'finalise the workout and start the timer'},
 ];
 
 export function displayTooltip(element, tooltipText) {
@@ -22,7 +27,7 @@ export function displayTooltip(element, tooltipText) {
 
 export function hideTooltip() {
     const hintInfo = document.getElementById('hintInfo');
-    hintInfo.textContent = 'hover over stuff to see more info!';
+    hintInfo.textContent = '';
 }
 
 

@@ -8,3 +8,10 @@ const db = new sqlite3.Database('./hiitUsers.sql', sqlite3.OPEN_READWRITE, (erro
     }
 });
 
+db.close((err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+});
+
