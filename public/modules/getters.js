@@ -3,10 +3,12 @@
 import { difficultyNames } from "./difficulties.js";
 import { workoutTimes } from './workouttimes.js'; // Importing the workoutTimes map
 
-const restTime = 5; // Constant rest time in seconds
+let restTime = 5;
 
-let exerciseArr = [];
+export let exerciseArr = [];
 
+
+// converts the playlist items to an array of exercise times
 export function getItemsInPlaylist() {
     exerciseArr = [];
     const playlist = document.querySelector('.playlist');
@@ -28,7 +30,7 @@ export function getItemsInPlaylist() {
 
 }
 
-export { exerciseArr };
+//export { exerciseArr };
 
 
 
@@ -37,4 +39,5 @@ export function getDifficulty() {
     const slider = document.getElementById('difficultySlider');
     const difficultyName = difficultyNames[slider.value];
     console.log('Difficulty level:', difficultyName);
+    
 }

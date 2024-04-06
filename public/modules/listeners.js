@@ -13,8 +13,10 @@ export function timerBtnListener() {
         console.log('countdown', exerciseArr);
         updateWorkoutArr(); // Update workoutArr before starting countdown
         startCountdown();
+      } else if (exerciseArr.length == 0) {
+        console.log('no exercises in playlist');
       } else {
-        console.log('no exercises in playlist or countdown already running.');
+        console.log('countdown already running');
       }
     });
 }
