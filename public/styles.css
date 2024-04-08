@@ -135,6 +135,32 @@ body::-webkit-scrollbar-thumb{
     background-color: #0d0d0d;
 }
 
+.displayWorkout{
+    font-size: 3em; 
+    font-weight: bold;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d7d7d7;
+}
+
+@keyframes flashRed {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.4);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+
+.flashRed {
+    animation: flashRed 0.5s linear; /* Adjust duration and timing function as needed */
+}
 #timer {
     font-family: 'pillove', Arial, sans-serif;
     font-style: italic;
@@ -209,16 +235,7 @@ body::-webkit-scrollbar-thumb{
     background-color: #111111;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 8vh;
-    
-    padding: 0 5vw;
-    
-}
+
 
 
 .workoutSummary {
@@ -328,6 +345,8 @@ body::-webkit-scrollbar-thumb{
     border-style: solid;
     border-color: #646464;
     overflow-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 
@@ -342,9 +361,9 @@ body::-webkit-scrollbar-thumb{
 }
 
 .confirm button:active{
-    width: 34vh;
-    height: 4vh;
-    border-radius: 25px;
+    /* width: 34vh;
+    height: 4vh; 
+    border-radius: 25px;*/
     border: none;
     background-color: #00ff1a;
     
@@ -469,5 +488,40 @@ body::-webkit-scrollbar-thumb{
 
 
 
+.browse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 43.5%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgb(22, 22, 22);
+    transition: all 0.5s;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-style: solid;
+    border-color: #d7d7d7;
+    opacity: 1;
+    visibility: visible;
+}
+.browse button{
+    width: 10vh;
+    height: 5vh;
+    border-radius: 15px;
+    border: none;
+    background-color: #00c313;
+    align-items: center;
 
+}
+
+.browse--hidden {
+    width: 0vh;
+    height: 0vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s;
+}
 

@@ -28,10 +28,13 @@
       
         <div class="circle-outline">
           <div class="middle-circle">
+            <div class="displayWorkout">
+              <p id="displayWorkoutName">:0</p>
+            </div>
           </div>
         </div>
       
-      <div id="timer">60.00</div>
+      <div id="timer">--.--</div>
     </div>
     <div class="btn">
       <button id="stop-watch-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg></button> 
@@ -85,10 +88,11 @@
         <div class="confirm">
           <button id="confirmWorkout">CONFIRM</button>
         </div>
-        
       </div>
       
-      
+    </div>
+    <div class="browse--hidden">
+      <button id="browseExit">exit</button> 
     </div>
   </div>
   <script src="./main.js" type="module"></script>

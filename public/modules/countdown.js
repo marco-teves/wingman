@@ -6,6 +6,7 @@ export let isRunning = false;
 const circle = document.querySelector(".circle-outline");
 let workoutArr = exerciseArr;
 
+
 export function updateWorkoutArr() {
   workoutArr = exerciseArr;
 }
@@ -18,13 +19,20 @@ export function startCountdown() {
 
     let workoutIndex = 0;
     let seconds = workoutArr[workoutIndex];
-
+    
     function countdown() {
       isRunning = true;
+
+      // index dependant audio cues
+      if (workoutIndex % 2 === 1) {
+        restWarn.play();
+      }
 
       const countdownInterval = setInterval(() => {
         seconds -= 0.01;
         timerElem.innerText = formatTime(seconds);
+
+        //timer dependant audio cues
         if (seconds >= 10.1) {
             timerElem.style.color = 'white';
         } else if (seconds <= 10 && seconds >= 9.99) {

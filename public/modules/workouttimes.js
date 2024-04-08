@@ -15,8 +15,8 @@ if (sliderValue === 1) {
 
 
 export const workoutTimes = {
-    'Push Ups': 30,
-    'Plank Hold': 45,
+    'Push Ups': 3,
+    'Plank Hold': 4,
     'Mountain Climbers': 30,
     'High Knees': 60,
     'Burpees': 10,
