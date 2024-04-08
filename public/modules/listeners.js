@@ -1,9 +1,9 @@
 //listeners.js
 
-import { startCountdown, isRunning, updateWorkoutArr } from './countdown.js';
+import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './countdown.js';
 import { browseOpen, menuOpen, error } from './audio.js';
 import { deleteItem } from './draganddrop.js';
-import { getItemsInPlaylist, exerciseArr, getDifficulty } from './getters.js';
+import { getNamedArray, getItemsInPlaylist, exerciseArr, getDifficulty } from './getters.js';
 
 export function timerBtnListener() {
     const timerBtn = document.querySelector("#stop-watch-btn");
@@ -11,22 +11,23 @@ export function timerBtnListener() {
     timerBtn.addEventListener('click', function () {
       if (isRunning === false && exerciseArr.length > 0) {
         console.log('countdown', exerciseArr);
-        updateWorkoutArr(); // Update workoutArr before starting countdown
+        updateWorkoutArr();
+        updateNamedArr();
         startCountdown();
       } else if (exerciseArr.length == 0) {
         error.play();
-        // Remove the flashRed class if it's already applied
+        
         timerBtn.classList.remove('flashRed');
-        // Trigger animation on the button by adding the flashRed class
-        void timerBtn.offsetWidth; // Trigger reflow to restart the animation
+        
+        void timerBtn.offsetWidth;
         timerBtn.classList.add('flashRed');
         console.log('no exercises in playlist');
       } else {
         error.play();
-        // Remove the flashRed class if it's already applied
+        
         timerBtn.classList.remove('flashRed');
-        // Trigger animation on the button by adding the flashRed class
-        void timerBtn.offsetWidth; // Trigger reflow to restart the animation
+       
+        void timerBtn.offsetWidth; 
         timerBtn.classList.add('flashRed');
         console.log('countdown already running');
       }
@@ -39,15 +40,10 @@ export function handleArrowIconClick() {
   const stopwatchContainer = document.querySelector(".stopwatchContainer");
 
   arrowIcon.addEventListener('click', function () {
-      console.log("Arrow icon clicked");
-      arrowIcon.classList.toggle("arrow-rotated");
-      stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
-      menuOpen.play();
-
-      // Add transitionend event listener if needed
-      stopwatchContainer.addEventListener("transitionend", () => {
-          // Add transitionend logic here if needed
-      });
+    console.log("Arrow icon clicked");
+    arrowIcon.classList.toggle("arrow-rotated");
+    stopwatchContainer.classList.toggle("stopwatchContainer--hidden");
+    menuOpen.play();
   });
 }
 
@@ -81,13 +77,18 @@ export function deleteBtn(){
   document.getElementById('erase').addEventListener('click', deleteItem);
 }
 
-export function confirmBtn(){
-  document.getElementById('confirmWorkout').addEventListener('click', getItemsInPlaylist);
- 
+export function confirmBtn() {
+  const confirmButton = document.getElementById('confirmWorkout');
+  confirmButton.addEventListener('click', getItemsInPlaylist);
+  confirmButton.addEventListener('click', getNamedArray);
 }
 
 export function difficultySlider(){
   document.getElementById('difficultySlider').addEventListener('oninput', getDifficulty());
 }
+
+/* export function saveBtn(){
+  document.getElementById('save').addEventListener('click', getNamedArray);
+} */
 
 

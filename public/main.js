@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     adjustDifficultySlider();
     handleDragging();
     deleteBtn();
-    confirmBtn()
-    difficultySlider()
+    confirmBtn();
+
+    difficultySlider();
 });
 
 
