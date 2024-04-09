@@ -91,6 +91,7 @@ body::-webkit-scrollbar-thumb{
     transform: scale(1.1);
     fill: #d7d7d7;
 }
+
 #stopwatch {
     display: flex;
     flex-direction: column;
@@ -136,16 +137,18 @@ body::-webkit-scrollbar-thumb{
 }
 
 .displayWorkout{
-    font-size: 3em; 
+    font-size: 5vh; 
     font-weight: bold;
     font-style: italic;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     color: #d7d7d7;
 }
-
+#displayWorkoutName{
+    color: rgba(215, 215, 215, 1);
+}
 #displayNextWorkoutName{
     color: rgba(215, 215, 215, 0.5);
 }
@@ -346,7 +349,7 @@ body::-webkit-scrollbar-thumb{
     justify-content: center;
     align-items: center;
     height: 50vh;
-    width: 50vh;
+    width: 50vw;
     border-style: solid;
     border-color: #646464;
     overflow-wrap: break-word;
@@ -495,9 +498,9 @@ body::-webkit-scrollbar-thumb{
 
 .browse {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     position: fixed;
+    align-items: center;
     top: 0;
     left: 0;
     width: 43.5%;
@@ -512,16 +515,25 @@ body::-webkit-scrollbar-thumb{
     opacity: 1;
     visibility: visible;
 }
-.browse button{
+.exit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh;
+    width: 30%;
+    height: 10%;
+    fill: #d7d7d7;
+    transition: all 0.4s;
+}
+#browseExit{
+    top: 0;
+    right: 0;
     width: 10vh;
     height: 5vh;
-    border-radius: 15px;
-    border: none;
-    background-color: #00c313;
-    align-items: center;
+    fill: #d7d7d7;
+    transition: all 0.4s;
 
 }
-
 .browse--hidden {
     width: 0vh;
     height: 0vh;
@@ -530,3 +542,29 @@ body::-webkit-scrollbar-thumb{
     transition: opacity 0.5s;
 }
 
+.browsePlaylists{
+    height: 80vh;
+    width: 90%;
+    background-color: #7c0000;
+    overflow-y: scroll;
+}
+
+.playlistOptions{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-style: italic;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    background-color: #027000;
+    align-items: center;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-color: #027000;
+    
+}
+
+.playlistOptions:hover{
+    
+    background-color: #03b400;
+}

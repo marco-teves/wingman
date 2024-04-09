@@ -74,7 +74,7 @@ export function startCountdown() {
             countdown();
           } else {
             document.getElementById('timer').innerText = 'finish!';
-            timerElem.style.color = 'red';
+            timerElem.style.color = 'white';
             finishWarn.play();
             isRunning = false;
             circle.classList.toggle("pulse");

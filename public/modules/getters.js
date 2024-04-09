@@ -15,9 +15,10 @@ export function getItemsInPlaylist() {
     const workoutItems = playlist.querySelectorAll('.workoutItem');
 
     let isFirstExercise = true; // Flag variable to track if it's the first exercise
-
+    
     workoutItems.forEach(workoutItem => {
         const exerciseName = workoutItem.textContent.trim();
+        
         const exerciseTime = workoutTimes[exerciseName];
         if (exerciseTime !== undefined) { 
             if (isFirstExercise) {

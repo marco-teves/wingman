@@ -87,8 +87,15 @@ export function difficultySlider(){
   document.getElementById('difficultySlider').addEventListener('oninput', getDifficulty());
 }
 
-/* export function saveBtn(){
-  document.getElementById('save').addEventListener('click', getNamedArray);
-} */
+export function saveBtn(){
+  document.getElementById('save').addEventListener('click', function() {
+
+    const playlistName = prompt('Enter playlist name:');
+    const authorName = prompt('Enter author name:');
+
+    console.log('Playlist Name:', playlistName);
+    console.log('Author Name:', authorName);
+  });
+}
 
 
