@@ -4,6 +4,7 @@ import { error } from './audio.js';
 const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
 const maxItemsInPlaylist = 5;
+let activeElement = null; // Declare activeElement outside of functions
 
 // Drag start function
 export function dragStart(event) {
@@ -17,6 +18,7 @@ export function dragOver(event) {
     console.log('item is over drop zone...');
 }
 
+// Drop function
 // Drop function
 export function drop(event) {
     event.preventDefault();
@@ -33,6 +35,7 @@ export function drop(event) {
     }
 
     if (draggedItem) {
+        ;
         const clone = draggedItem.cloneNode(true); // Clone the dragged item
         const textContent = clone.textContent.trim(); // Retrieve text content of the clone
         console.log(`Item "${textContent}" dropped!`); // Log the message with interpolated text content
@@ -42,22 +45,24 @@ export function drop(event) {
     }
 }
 
-// Touch start function
+
 export function touchStart(event) {
-    console.log('touch start');
+    console.log('touch start'); // Log the touch start event
     event.preventDefault();
     event.stopPropagation();
+  
+    // Check if a touch is already active
+    if (activeElement) return; // If yes, prevent further handling
+  
     activeElement = event.target;
     const touch = event.touches[0];
     const offsetX = touch.clientX - event.target.getBoundingClientRect().left;
     const offsetY = touch.clientY - event.target.getBoundingClientRect().top;
-    event.target.setAttribute('data-offset-x', offsetX);
-    event.target.setAttribute('data-offset-y', offsetY);
-    // Add a class for visual feedback
-    event.target.classList.add('dragging');
-}
-
-// Touch move function
+    activeElement.setAttribute('data-offset-x', offsetX);
+    activeElement.setAttribute('data-offset-y', offsetY);
+    activeElement.classList.add('dragging');
+  }
+  
 export function touchMove(event) {
     console.log('touch move');
     event.preventDefault();
@@ -88,10 +93,11 @@ export function handleDragging() {
         elem.addEventListener('touchend', touchEnd);
     });
 
+    // Ensure that dragover and drop event listeners are attached to dropZone
     dropZone.addEventListener('dragover', dragOver);
     dropZone.addEventListener('drop', drop);
-    dropZone.addEventListener('touchmove', touchMove); // Touch event for drop zone
 }
+
 
 
 export function deleteItem() {

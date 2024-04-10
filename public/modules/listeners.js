@@ -65,12 +65,6 @@ export function handleBrowserButtonClickAndExit() {
   });
 }
 
-
-
-
-
-
-
 export function deleteBtn(){
   document.getElementById('erase').addEventListener('click', deleteItem);
 }

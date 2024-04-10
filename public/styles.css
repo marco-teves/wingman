@@ -55,6 +55,8 @@ body::-webkit-scrollbar-thumb{
 }
 
 .stopwatchContainer{
+    padding-top: 20vh;
+    padding-bottom: 10vh;
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -62,6 +64,25 @@ body::-webkit-scrollbar-thumb{
     height: 100vh;
     width: 100%;
     background-color: #0c0c0c;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+.pausedFx{
+    display: none;
+    visibility: hidden;
+
+}
+.pausedFx--active{
+    pointer-events: none;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(#0c0c0c00 50%, #00ff0048 100%);
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s;
@@ -93,17 +114,22 @@ body::-webkit-scrollbar-thumb{
 }
 
 #stopwatch {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
+.watchCircle{
+    margin-top: 50px;
+    display: flex;
+    width: 50%;
+}
 .circle-outline {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60vh;
-    height: 60vh;
+    width: 40vh;
+    height: 40vh;
     border-radius: 50%;
     background: var(--lenient);
 }
@@ -113,25 +139,29 @@ body::-webkit-scrollbar-thumb{
 
 @keyframes pulse {
     0% {
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
     }
     30% {
-        transform: scale(0.8);
+        transform: scale(0.8) rotate(-1deg); /* Rotate slightly to the left */
         box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     }
+    50% {
+        transform: scale(0.8) rotate(2deg); /* Rotate slightly to the right */
+    }
     100% {
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
         box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     }
 }
+
 
 .middle-circle {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 55vh;
-    height: 55vh;
+    width: 35vh;
+    height: 35vh;
     border-radius: 50%;
     background-color: #0d0d0d;
 }
@@ -150,6 +180,7 @@ body::-webkit-scrollbar-thumb{
     color: rgba(215, 215, 215, 1);
 }
 #displayNextWorkoutName{
+    font-size: 0.6em;
     color: rgba(215, 215, 215, 0.5);
 }
 
@@ -176,21 +207,25 @@ body::-webkit-scrollbar-thumb{
     justify-content: center;
     align-items: center;
     color: #d7d7d7;
-    font-size: 5em; /* Adjust the font size as needed */
-    margin-top: 20px; /* Add margin for spacing */
+    font-size: 5em;
+    
+    width: 100vw;
+    height: 20vh;
 }
 
 .btn {
-    margin-top: 30px;
+    
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
     
 }
 
 .stopwatchBtn{
-    margin: 0 20px; /* Adjust the margin as needed */
+    margin: 10px;
     width: 200px;
-    height: 50px;
+    height: 8vh;
     border-radius: 50px;
     background: #d7d7d7;
     transition: transform 0.5s, background 0.3s;

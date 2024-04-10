@@ -1,5 +1,6 @@
 // countdown.js
-import { tenSecWarn, restWarn, finishWarn, menuOpen, getReady } from './audio.js';
+
+import { tenSecWarn, restWarn, finishWarn, menuOpen, getReady, pause, unpause, nextWorkout } from './audio.js';
 import { exerciseArr, namedArr } from './getters.js';
 
 export let isRunning = false;
@@ -52,6 +53,9 @@ export function startCountdown() {
       }
       if (workoutIndex === 0) {
         getReady.play();
+      } 
+      if (workoutIndex !== 0 && workoutIndex !== 1  && workoutIndex % 2 !== 0){
+        nextWorkout.play();
       }
 
       const countdownInterval = setInterval(() => {
@@ -80,7 +84,8 @@ export function startCountdown() {
               displayNextNameElem.innerText = displayName[displayNameIndex];
               countdown();
             } else {
-              document.getElementById('timer').innerText = 'finish!';
+              document.getElementById('timer').innerText = '--.--';
+              displayNameElem.innerText = 'finshed!';
               timerElem.style.color = 'white';
               finishWarn.play();
               isRunning = false;
@@ -97,12 +102,26 @@ export function startCountdown() {
 
 
 const pauseBtn = document.getElementById('pauseBtn');
+const pausedFx = document.getElementById('pausedFx');
 
 pauseBtn.addEventListener('click', () => {
   if (isRunning) {
-    isPaused = !isPaused;
+    if (isPaused) {
+      isPaused = false;
+      unpause.play();
+      circle.classList.toggle("pulse");
+      pausedFx.classList.add("pausedFx");
+      pausedFx.classList.remove("pausedFx--active");
+    } else {
+      isPaused = true;
+      pause.play();
+      circle.classList.toggle("pulse");
+      pausedFx.classList.remove("pausedFx");
+      pausedFx.classList.add("pausedFx--active");
+    }
   }
 });
+
 
 
 

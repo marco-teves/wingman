@@ -6,3 +6,6 @@ export const click = new Audio("assets/click.mp3");
 export const error = new Audio("assets/error.mp3");
 export const browseOpen = new Audio("assets/browseOpen.mp3");
 export const getReady = new Audio("assets/getReady.mp3");
+export const pause = new Audio("assets/pause.mp3");
+export const unpause = new Audio("assets/unpause.mp3");
+export const nextWorkout = new Audio("assets/nextWorkout.mp3");
