@@ -3,6 +3,8 @@ import { tenSecWarn, restWarn, finishWarn, menuOpen, getReady } from './audio.js
 import { exerciseArr, namedArr } from './getters.js';
 
 export let isRunning = false;
+export let isPaused = false;
+
 const circle = document.querySelector(".circle-outline");
 let workoutArr = exerciseArr;
 let displayName = namedArr;
@@ -13,6 +15,10 @@ export function updateWorkoutArr() {
 export function updateNamedArr() {
   displayName = namedArr;
 }
+
+
+
+
 export function startCountdown() {
   const timerElem = document.getElementById('timer');
   const displayNameElem = document.getElementById('displayWorkoutName');
@@ -49,35 +55,37 @@ export function startCountdown() {
       }
 
       const countdownInterval = setInterval(() => {
-        seconds -= 0.01;
-        timerElem.innerText = formatTime(seconds);
+        if (!isPaused) {
+          seconds -= 0.01;
+          timerElem.innerText = formatTime(seconds);
 
-        // timer dependent audio cues
-        if (seconds >= 10.1) {
-          timerElem.style.color = 'white';
-        } else if (seconds <= 10 && seconds >= 9.99) {
-          timerElem.style.color = 'yellow';
-          tenSecWarn.play();
-        }
-        document.getElementById('timer').innerText = formatTime(seconds);
-
-        if (seconds <= 0) {
-          clearInterval(countdownInterval);
-
-          if (workoutIndex + 1 < workoutArr.length) {
-            workoutIndex++;
-            displayNameIndex++;
-
-            seconds = workoutArr[workoutIndex];
-            // Update displayNextWorkoutName with the next element from displayName array
-            displayNextNameElem.innerText = displayName[displayNameIndex]; 
-            countdown();
-          } else {
-            document.getElementById('timer').innerText = 'finish!';
+          // timer dependent audio cues
+          if (seconds >= 10.1) {
             timerElem.style.color = 'white';
-            finishWarn.play();
-            isRunning = false;
-            circle.classList.toggle("pulse");
+          } else if (seconds <= 10 && seconds >= 9.99) {
+            timerElem.style.color = 'yellow';
+            tenSecWarn.play();
+          }
+          document.getElementById('timer').innerText = formatTime(seconds);
+
+          if (seconds <= 0) {
+            clearInterval(countdownInterval);
+
+            if (workoutIndex + 1 < workoutArr.length) {
+              workoutIndex++;
+              displayNameIndex++;
+
+              seconds = workoutArr[workoutIndex];
+
+              displayNextNameElem.innerText = displayName[displayNameIndex];
+              countdown();
+            } else {
+              document.getElementById('timer').innerText = 'finish!';
+              timerElem.style.color = 'white';
+              finishWarn.play();
+              isRunning = false;
+              circle.classList.toggle("pulse");
+            }
           }
         }
       }, 10);
@@ -86,6 +94,15 @@ export function startCountdown() {
     countdown();
   }
 }
+
+
+const pauseBtn = document.getElementById('pauseBtn');
+
+pauseBtn.addEventListener('click', () => {
+  if (isRunning) {
+    isPaused = !isPaused;
+  }
+});
 
 
 

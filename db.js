@@ -1,16 +1,24 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database('./wingman.db', sqlite3.OPEN_READWRITE, (error) => {
+let db = new sqlite3.Database('./wingman.db', sqlite3.OPEN_READWRITE, (error) => {
     if (error) {
         console.error(error.message);
     } else {
         console.log(`Connected to the HIIT database: ${db}`);
+        db.run('CREATE TABLE IF NOT EXISTS activities(id INTEGER PRIMARY KEY AUTOINCREMENT, activity_name NOT NULL VARCHAR(30), activity_duration INTEGER NOT NULL CHECK (activity_duration >= 0 AND activity_duration <= 60), activity_description TEXT NOT NULL)', 
+        (error) => {
+            if (error) {
+                console.error(error.message);
+            } else {
+                console.log('Created activities table');
+            }
+        });
     }
 });
 
+module.exports = db;
 
-const createUsersTable = 'CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL)';
-const createPlaylistTable = 'CREATE TABLE playlist(id INTEGER PRIMARY KEY AUTOINCREMENT, playlist_name VARCHAR(30) NOT NULL, workout_array TEXT NOT NULL, author_name VARCHAR(30) NOT NULL)';
+
 
 //db.run(createPlaylistTable)
 
@@ -18,12 +26,12 @@ const createPlaylistTable = 'CREATE TABLE playlist(id INTEGER PRIMARY KEY AUTOIN
 
 
 
-db.close((err) => {
+/* db.close((err) => {
     if (err) {
       return console.error(err.message);
     }
     console.log('Close the database connection.');
-});
+}); */
 
 
 

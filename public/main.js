@@ -1,13 +1,13 @@
 
 import { hideLoadScreen } from "./modules/loadscreen.js";
-import { timerBtnListener,handleBrowserButtonClickAndExit, handleArrowIconClick, deleteBtn, confirmBtn, saveBtn, difficultySlider} from "./modules/listeners.js";
+import { timerBtnListener, handleBrowserButtonClickAndExit, handleArrowIconClick, deleteBtn, confirmBtn, saveBtn, addBtn, difficultySlider} from "./modules/listeners.js";
 import {dupeWorkoutItems} from "./modules/dupeitems.js";
 import { handleDragging } from "./modules/draganddrop.js";
 import { getDifficulty } from "./modules/getters.js";
 import { scrollLeftRight, adjustDifficultySlider } from "./modules/animations.js";
 import { initializeTooltips } from "./modules/hints.js";
 import { buildPlaylist } from "./modules/buildbrowser.js";
-
+import { addWorkout } from "./modules/buildworkoutoptions.js";
 
 console.log("Start countdown function called.");
 
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hideLoadScreen();
     }, 1);
     timerBtnListener();
+    
     initializeTooltips();
     handleArrowIconClick();
     handleBrowserButtonClickAndExit();
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     saveBtn();
     difficultySlider();
     buildPlaylist();
+    addBtn();
 });
 
 

@@ -4,10 +4,10 @@ import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './c
 import { browseOpen, menuOpen, error } from './audio.js';
 import { deleteItem } from './draganddrop.js';
 import { getNamedArray, getItemsInPlaylist, exerciseArr, getDifficulty } from './getters.js';
+import { addWorkout } from './buildworkoutoptions.js';
 
 export function timerBtnListener() {
-    const timerBtn = document.querySelector("#stop-watch-btn");
-    
+    const timerBtn = document.getElementById("playBtn");
     timerBtn.addEventListener('click', function () {
       if (isRunning === false && exerciseArr.length > 0) {
         console.log('countdown', exerciseArr);
@@ -16,23 +16,21 @@ export function timerBtnListener() {
         startCountdown();
       } else if (exerciseArr.length == 0) {
         error.play();
-        
         timerBtn.classList.remove('flashRed');
-        
         void timerBtn.offsetWidth;
         timerBtn.classList.add('flashRed');
         console.log('no exercises in playlist');
       } else {
         error.play();
-        
         timerBtn.classList.remove('flashRed');
-       
         void timerBtn.offsetWidth; 
         timerBtn.classList.add('flashRed');
         console.log('countdown already running');
       }
     });
 }
+
+
 
 
 export function handleArrowIconClick() {
@@ -97,5 +95,46 @@ export function saveBtn(){
     console.log('Author Name:', authorName);
   });
 }
+
+export function addBtn() {
+    document.getElementById('add').addEventListener('click', function() {
+        let workoutName;
+        let duration;
+        let description;
+
+        do {
+            workoutName = prompt('Enter workout name (or click cancel to cancel):');
+            if (workoutName === null) {
+                console.log('User cancelled the input.');
+                return;
+            }
+        } while (!workoutName);
+
+        do {
+            const durationInput = prompt(`Enter the duration (in seconds) for ${workoutName} (or click cancel to cancel):`);
+            if (durationInput === null) {
+                console.log('User cancelled the input.');
+                return;
+            }
+            duration = parseInt(durationInput);
+            if (!Number.isInteger(duration) || duration <= 0) {
+                alert('Please enter a valid whole number greater than 0 for the duration.');
+            }
+        } while (!Number.isInteger(duration) || duration <= 0);
+
+        // Prompt for workout description
+        description = prompt(`Enter a description for ${workoutName} (optional):`);
+
+        // Call the addWorkout function with the entered values
+        addWorkout(workoutName, duration, description);
+
+        console.log('Workout Name:', workoutName);
+        console.log('Duration:', duration);
+        console.log('Description:', description);
+    });
+}
+
+
+
 
 
