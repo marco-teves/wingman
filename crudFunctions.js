@@ -1,31 +1,30 @@
-const db = require('./db.js');
 
-//CREATE
-const createItem = (activityName, activityDuration, activityDescription, callback) => {
-    const sql = `INSERT INTO activities(activity_name, activity_duration, activity_description) VALUES(?, ?, ?)`;
-    db.run(sql, [activityName, activityDuration, activityDescription], 
-        (error) => {
-            callback(error, {id: this.lastID});
-        });
-};
 
-const readItems = (callback) => {
-    const sql = `SELECT * FROM activities`;
-    db.all(sql, [], (error, rows) => {
-        callback(error, rows);
+import { open } from 'sqlite';
+import sqlite3 from 'sqlite3';
+import uuid from 'uuid-random';
+
+async function init() {
+    const db = await open({
+        filename: './database/wingman.sql', // Adjust the path as needed
+        driver: sqlite3.Database,
+        verbose: true
     });
+    await db.migrate({ migrationsPath:'./migrations-sqlite' }); // Adjust the path as needed
+    return db;
 }
 
-const updateItem = (id, activityName, activityDuration, activityDescription, callback) => {
-    const sql = `UPDATE activities SET activity_name = ?, activity_duration = ?, activity_description = ? WHERE id = ?`;
-    db.run(sql, [activityName, activityDuration, activityDescription, id], (error) => {
-        callback(error);
-    });
+const connectedDb = init();
+
+export async function readTable(tableName) {
+    const db = await connectedDb;
+    try {
+        const rows = await db.all(`SELECT * FROM ${tableName}`);
+        return rows;
+    } catch (error) {
+        console.error('Error reading table:', error);
+        throw error;
+    }
 }
 
-const deleteItem = (id, callback) => {
-    const sql = `DELETE FROM activities WHERE id = ?`;
-    db.run(sql, [id], (error) => {
-        callback(error);
-    });
-}
+

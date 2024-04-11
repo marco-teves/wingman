@@ -5,7 +5,7 @@ let nextItemId = 6; // Starting ID number for the first div to be added
 
 export function addWorkout(workoutName) {
     const container = document.getElementById('options'); // Get the container where you want to add divs
-    const className = 'workoutItem'
+    const className = 'workoutItem--created'
         
     const newActivity = document.createElement('div');
     

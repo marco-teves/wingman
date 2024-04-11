@@ -1,19 +1,20 @@
-const express = require('express');
-const path = require('path');
-const port = 8080;
+import express from 'express';
+import * as crud from './crudFunctions.js';
+
 const app = express();
-const database = require('./db.js'); 
-const {createItem, readItems, updateItem, deleteItem} = require('./crudFunctions.js');
+const port = 8080;
 
 
-
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-app.use((req,res) =>{
-    res.status(404);
-    res.sendFile(path.join(__dirname,'404.html'));
-})
+app.use((req, res, next) => {
+    res.status(404).sendFile(__dirname + '/public/404.html');
+});
 
+
+
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is listening on http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });

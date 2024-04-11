@@ -86,6 +86,7 @@ body::-webkit-scrollbar-thumb{
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s;
+    mix-blend-mode:difference;
 }
 
 .dropDown{
@@ -466,7 +467,26 @@ body::-webkit-scrollbar-thumb{
     user-select: none;
     transition: background-color 0.4s;
 }
-.workoutItem:hover{
+.workoutItem--created{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #38d86a;
+    height: 70%;
+    min-width: 200px;
+    margin-right: 10px;
+    border-radius: 15px;
+
+    opacity: 1;
+    border-style: solid;
+
+    user-select: none;
+    transition: background-color 0.4s;
+}
+.workoutItem:hover, .workoutItem--created:hover{
     background-color: #abd4b0;
     cursor: move;
 }
