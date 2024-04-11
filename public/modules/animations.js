@@ -42,5 +42,5 @@ export function adjustDifficultySlider() {
             console.log("Difficulty level:", difficultyName);
         }
     });
-}
+};
 

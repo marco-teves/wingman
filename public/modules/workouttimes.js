@@ -1,4 +1,4 @@
-const slider = document.getElementById('difficultySlider');
+/* const slider = document.getElementById('difficultySlider');
 const sliderValue = parseInt(slider.value);
 
 
@@ -11,7 +11,7 @@ if (sliderValue === 1) {
     restTime = 5;
 } else { 
     restTime = 30;
-};
+}; */
 
 
 export const workoutTimes = {

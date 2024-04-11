@@ -1,4 +1,4 @@
-import {dragStart, touchStart, touchEnd, touchMove} from './draganddrop.js';
+import {handleDragging} from './draganddrop.js';
 
 
 let nextItemId = 6; // Starting ID number for the first div to be added
@@ -15,11 +15,6 @@ export function addWorkout(workoutName) {
     newActivity.draggable = true;
     container.appendChild(newActivity);
     nextItemId++;
-    newActivity.addEventListener('dragstart', dragStart);
-    newActivity.addEventListener('touchstart', touchStart);
-    newActivity.addEventListener('touchmove', touchMove);
-    newActivity.addEventListener('touchend', touchEnd);
-    
-
+    newActivity.addEventListener('dragstart', handleDragging);
     
 }

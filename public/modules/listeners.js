@@ -45,7 +45,7 @@ export function handleArrowIconClick() {
   });
 }
 
-export function handleBrowserButtonClickAndExit() {
+/* export function handleBrowserButtonClickAndExit() {
   const browseButton = document.getElementById("browse");
   const browserDiv = document.querySelector(".browse--hidden");
 
@@ -63,7 +63,7 @@ export function handleBrowserButtonClickAndExit() {
       handleToggle();
     }
   });
-}
+} */
 
 export function deleteBtn(){
   document.getElementById('erase').addEventListener('click', deleteItem);

@@ -11,7 +11,7 @@ const hints = [
     //utility buttons
     { element: document.getElementById('erase'), tooltipText: 'deletes all items from playlist' },
     { element: document.getElementById('save'), tooltipText: 'saves the current playlist' },
-    { element: document.getElementById('browse'), tooltipText: 'browse user-generated playlists to try out' },
+    /* { element: document.getElementById('browse'), tooltipText: 'browse user-generated playlists to try out' }, */
     
     
     { element: document.getElementById('difficultySlider'), tooltipText: 'adjust the difficulty of the workout'},
@@ -19,7 +19,7 @@ const hints = [
     { element: document.getElementById('confirmWorkout'), tooltipText: 'finalise the workout and start the timer'},
 ];
 
-export function displayTooltip(element, tooltipText) {
+/* export function displayTooltip(element, tooltipText) {
     const hintInfo = document.getElementById('hintInfo');
     hintInfo.textContent = tooltipText;
 }
@@ -28,10 +28,10 @@ export function displayTooltip(element, tooltipText) {
 export function hideTooltip() {
     const hintInfo = document.getElementById('hintInfo');
     hintInfo.textContent = '';
-}
+} */
 
 
-export function initializeTooltips() {
+/* export function initializeTooltips() {
     
     hints.forEach(function(item) {
         item.element.addEventListener('mouseenter', function() {
@@ -42,4 +42,4 @@ export function initializeTooltips() {
             hideTooltip();
         });
     });
-}
+} */

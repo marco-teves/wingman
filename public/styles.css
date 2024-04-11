@@ -267,7 +267,10 @@ body::-webkit-scrollbar-thumb{
     fill: #00FF00;
     cursor: pointer;
 }
-
+.dropDown{
+    width: 100%;
+    height: 100vh;
+}
 
 .settings{
     display: flex;
@@ -279,27 +282,36 @@ body::-webkit-scrollbar-thumb{
     background-color: #111111;
 }
 
-
-
-
-.workoutSummary {
-    display: grid; 
+.workoutSummary { 
+    padding-top: 5vh;
+    display: grid;
     height: 100vh;
-    width: 100vw;
+    width: 80vw;
     justify-content: center;
-    grid-auto-flow: row dense; 
-    grid-template-columns: 1.3fr 1.7fr; 
-    grid-template-rows: 0.5fr  2fr 0.2fr; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-      
-    "options menu"
-    "playlist menu"
-    "utility confirm"; 
-
-    /* border-style: solid;
-    border-color: #646464; */
+    align-items: center;
+    grid-template-columns: 2fr;
+    grid-template-rows: 0.3fr 0.7fr 2.7fr 0.8fr 0.5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "tab"
+      "options"
+      "playlist"
+      "utility"
+      "confirm";
 }
+
+.tab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    background-color: #f00000;
+    
+
+}
+  
 .playlist { 
     grid-area: playlist; 
     background-color: #121212;
@@ -310,40 +322,47 @@ body::-webkit-scrollbar-thumb{
     overflow-y: scroll;
     border-color: #2f2f2f;
     border-right-style: solid;
-
+    border-left-style: solid;
+    height: 100%;
 }
 .options { 
+    height: 100%;
     grid-area: options; 
     display: flex;
     background-color: #212121;
     border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
     overflow-x: auto;
     white-space: nowrap;
     align-items: center;
     user-select: none;
     border-color: #353535;
     border-right-style: solid;
+    border-left-style: solid;
     border-top-style: solid;
     
 }
 .utility { 
+    height: 100%;
     grid-area: utility; 
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #212121;
     border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
     border-color: #353535;
     border-right-style: solid;
+    border-left-style: solid;
     border-bottom-style: solid;
 }
 
 .utility button{
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 5px;
     width: 10vh;
-    height: 5vh;
+    height: 7vh;
     border-radius: 15px;
     border: none;
     background-color: #00c313;
@@ -426,6 +445,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .workoutOptions {
+    position: absolute;
     display: flex;
     flex-direction: column;
    
@@ -515,7 +535,7 @@ body::-webkit-scrollbar-thumb{
 #difficultySlider{
     appearance: none;
     -webkit-appearance: none; 
-    width: 75%;
+    width: 30%;
     height: 25%;
     background-color: #1b1b1b;
     border-radius: 15rem;
@@ -526,17 +546,16 @@ body::-webkit-scrollbar-thumb{
 #difficultySlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 12vh;
-    height: 12vh; 
+    width: 6vh;
+    height: 6vh; 
     background: var(--thumb-color, green); 
-
     border-radius: 50%; 
     transition : all 0.3s;
 }
 
 #difficultySlider::-webkit-slider-thumb:hover{
-    width: 13vh;
-    height: 13vh; 
+    width: 7vh;
+    height: 7vh; 
 }
 
 
