@@ -9,3 +9,4 @@ export const getReady = new Audio("assets/getReady.mp3");
 export const pause = new Audio("assets/pause.mp3");
 export const unpause = new Audio("assets/unpause.mp3");
 export const nextWorkout = new Audio("assets/nextWorkout.mp3");
+export const confirm = new Audio("assets/confirm.mp3");

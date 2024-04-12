@@ -82,11 +82,11 @@ body::-webkit-scrollbar-thumb{
     align-items: center;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(#0c0c0c00 50%, #00ff0048 100%);
+    background: linear-gradient(#e1585800 50%, rgba(75, 75, 75, 0.684) 100%);
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s;
-    mix-blend-mode:difference;
+   
 }
 
 .dropDown{
@@ -286,7 +286,7 @@ body::-webkit-scrollbar-thumb{
     padding-top: 5vh;
     display: grid;
     height: 100vh;
-    width: 80vw;
+    width: 100vw;
     justify-content: center;
     align-items: center;
     grid-template-columns: 2fr;
@@ -326,12 +326,13 @@ body::-webkit-scrollbar-thumb{
     height: 100%;
 }
 .options { 
+    
     height: 100%;
     grid-area: options; 
     display: flex;
     background-color: #212121;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
+    /* border-top-right-radius: 25px;
+    border-top-left-radius: 25px; */
     overflow-x: auto;
     white-space: nowrap;
     align-items: center;
@@ -416,22 +417,16 @@ body::-webkit-scrollbar-thumb{
 
 .confirm button{
     width: 35vh;
-    height: 5vh;
-    border-radius: 15px;
+    height: 8vh;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     border: none;
-    background-color: #00c313;
-    
+    background-color: #515151;
+    font-weight: bolder;
+    color: #111111;
     transition: all 0.01s;
 }
 
-.confirm button:active{
-    /* width: 34vh;
-    height: 4vh; 
-    border-radius: 25px;*/
-    border: none;
-    background-color: #00ff1a;
-    
-}
 
 .confirm { 
     grid-area: confirm; 
@@ -448,7 +443,7 @@ body::-webkit-scrollbar-thumb{
     position: absolute;
     display: flex;
     flex-direction: column;
-   
+    
     align-items: center;
     width: 20vh;
     height: 100vh;
@@ -480,7 +475,7 @@ body::-webkit-scrollbar-thumb{
     min-width: 200px;
     margin-right: 10px;
     border-radius: 15px;
-
+    -webkit-user-select: none;
     opacity: 1;
     border-style: solid;
 

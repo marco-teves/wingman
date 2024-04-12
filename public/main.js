@@ -2,7 +2,7 @@
 import { hideLoadScreen } from "./modules/loadscreen.js";
 import { timerBtnListener, /* handleBrowserButtonClickAndExit */ handleArrowIconClick, deleteBtn, confirmBtn, saveBtn, addBtn /*  difficultySlider */} from "./modules/listeners.js";
 import {dupeWorkoutItems} from "./modules/dupeitems.js";
-import { handleDragging,/*  handleTouchDragging */ } from "./modules/draganddrop.js";
+import { handleDragging,handleTouchDragging} from "./modules/draganddrop.js";
 import { getDifficulty } from "./modules/getters.js";
 import { scrollLeftRight, adjustDifficultySlider} from "./modules/animations.js";
 /* import { initializeTooltips } from "./modules/hints.js"; */
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1);
     timerBtnListener();
     handleDragging();
-    /* handleTouchDragging(); */
+    handleTouchDragging();
     /* initializeTooltips(); */
     handleArrowIconClick();
     /* handleBrowserButtonClickAndExit(); */

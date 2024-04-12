@@ -1,7 +1,7 @@
 //listeners.js
 
 import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './countdown.js';
-import { browseOpen, menuOpen, error } from './audio.js';
+import { browseOpen, menuOpen, error, confirm } from './audio.js';
 import { deleteItem } from './draganddrop.js';
 import { getNamedArray, getItemsInPlaylist, exerciseArr, getDifficulty } from './getters.js';
 import { addWorkout } from './buildworkoutoptions.js';
@@ -66,13 +66,32 @@ export function handleArrowIconClick() {
 } */
 
 export function deleteBtn(){
-  document.getElementById('erase').addEventListener('click', deleteItem);
-}
+  const confirmButton = document.getElementById('confirmWorkout');
+  
+  document.getElementById('erase').addEventListener('click', () => {
+    confirmButton.innerText = 'PRESS TO CONFIRM'
+  confirmButton.style.backgroundColor = '#515151';
+  deleteItem();
+})
+  
+};
 
 export function confirmBtn() {
   const confirmButton = document.getElementById('confirmWorkout');
-  confirmButton.addEventListener('click', getItemsInPlaylist);
-  confirmButton.addEventListener('click', getNamedArray);
+  const playlist = document.querySelector('.playlist');
+  confirmButton.addEventListener('click', () => {
+    const hasItems = playlist.children.length > 0;
+    if (hasItems) {
+      confirmButton.innerText = '! CONFIRMED !';
+      confirmButton.style.backgroundColor = '#00ff1a';
+      confirm.play();
+    } else {
+      confirmButton.style.backgroundColor = '#515151';
+    }
+    getItemsInPlaylist();
+    getNamedArray();
+  });
+
 }
 
 export function difficultySlider(){

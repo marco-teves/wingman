@@ -49,14 +49,64 @@ export function handleDragging() {
     }
     
 }
+let isSwiping = false;
+let startTime;
 
-/* export function handleTouchDragging() {
-    draggables.addEventListener('touchmove', (event) =>{
-        let touchLocation = event.targetTouches[0];
-        draggables.style.left = touchLocation.pageX + 'px';
-        draggables.style.top = touchLocation.pageY + 'px';
+export function handleTouchDragging() {
+    let initialX; // Variable to store initial touch X position
+    draggables.forEach(elem => {
+      elem.addEventListener('touchstart', (event) => {
+        startTime = Date.now(); // Capture touch start timestamp
+        initialX = event.touches[0].clientX; // Get initial touch X coordinate
+      });
+  
+      elem.addEventListener('touchmove', (event) => {
+        const currentX = event.touches[0].clientX;
+        const movement = Math.abs(currentX - initialX); // Calculate movement in X direction
+  
+        // Adjust the threshold based on your needs (e.g., 50 pixels for a significant swipe)
+        if (movement > 2) {
+          isSwiping = true;
+        }
+      });
+  
+      elem.addEventListener('touchend', (event) => {
+        const endTime = Date.now();
+        const holdTime = endTime - startTime;
+  
+        if (holdTime >= 250 && !isSwiping) { // Check if hold time is over 1 second and no swipe detected
+          console.log('Element held for over 1 second!');
+  
+          // Similar logic to drop function here (assuming each draggable element has a unique ID):
+          const itemData = elem.id;
+          const draggedItem = document.getElementById(itemData);
+          const playlist = document.querySelector('.playlist');
+  
+          // Check if the maximum limit is reached (assuming you have a variable `maxItemsInPlaylist`)
+          if (playlist.children.length >= maxItemsInPlaylist) {
+            console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
+            error.play(); // Assuming you have an error sound effect or similar
+            return;
+          }
+  
+          if (draggedItem) {
+            const clone = draggedItem.cloneNode(true); // Clone the dragged item
+            const textContent = clone.textContent.trim(); // Retrieve text content of the clone
+            console.log(`Item "${textContent}" added!`); // Log the message with interpolated text content
+            playlist.appendChild(clone);
+          } else {
+            console.error('Dragged item not found.');
+          }
+  
+        } else {
+          console.log(isSwiping ? 'Swiped.' : 'Touch ended before 1 second.');
+        }
+  
+        // Reset swipe tracking for next touch interaction
+        isSwiping = false;
+      });
     });
-} */
+  }
 
 export function deleteItem() {
     const playlist = document.querySelector('.playlist');
