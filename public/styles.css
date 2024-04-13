@@ -86,7 +86,6 @@ body::-webkit-scrollbar-thumb{
     z-index: 1;
     opacity: 1;
     transition: opacity 0.5s, visibility 0.5s;
-   
 }
 
 .dropDown{
@@ -182,7 +181,7 @@ body::-webkit-scrollbar-thumb{
 }
 #displayNextWorkoutName{
     font-size: 0.6em;
-    color: rgba(215, 215, 215, 0.5);
+    color: rgba(0, 255, 4, 0.5);
 }
 
 @keyframes flashRed {

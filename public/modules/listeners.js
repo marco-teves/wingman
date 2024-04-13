@@ -3,7 +3,7 @@
 import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './countdown.js';
 import { browseOpen, menuOpen, error, confirm } from './audio.js';
 import { deleteItem } from './draganddrop.js';
-import { getNamedArray, getItemsInPlaylist, exerciseArr, getDifficulty } from './getters.js';
+import { getNamedArray, getItemsInPlaylist, exerciseArr} from './getters.js';
 import { addWorkout } from './buildworkoutoptions.js';
 
 export function timerBtnListener() {
@@ -94,9 +94,9 @@ export function confirmBtn() {
 
 }
 
-export function difficultySlider(){
+/* export function difficultySlider(){
   document.getElementById('difficultySlider').addEventListener('oninput', getDifficulty());
-}
+} */
 
 export function saveBtn(){
   document.getElementById('save').addEventListener('click', function() {

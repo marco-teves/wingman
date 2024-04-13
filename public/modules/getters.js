@@ -11,6 +11,7 @@ export let namedArr = [];
 // converts the playlist items to an array of exercise times
 export function getItemsInPlaylist() {
     exerciseArr = [];
+    restTime = getDifficulty();
     const playlist = document.querySelector('.playlist');
     const workoutItems = playlist.querySelectorAll('.workoutItem');
 
@@ -69,7 +70,7 @@ export function getNamedArray() {
 
 
 
-export function getDifficulty() {
+function getDifficulty() {
     const slider = document.getElementById('difficultySlider');
     const sliderValue = parseInt(slider.value);
     const difficultyName = difficultyNames[slider.value];
@@ -77,13 +78,11 @@ export function getDifficulty() {
 
 
     if (sliderValue === 1) {
-     restTime = 5;
+     return 60;
     } else if (sliderValue === 2) {
-        restTime = 15;
-    } else if (sliderValue === 3) {
-        restTime = 5;
+        return 45;
     } else { 
-        restTime = 30;
+        return 10;
     };
 
     

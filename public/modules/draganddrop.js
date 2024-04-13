@@ -1,3 +1,4 @@
+//draganddrop.js
 import { click } from './audio.js';
 import { error } from './audio.js';
 
@@ -6,49 +7,46 @@ const dropZone = document.querySelector('.playlist');
 const maxItemsInPlaylist = 5;
 
 
-export function handleDragging() {
-    draggables.forEach(elem => {
-        elem.addEventListener('dragstart', dragStart);
-    });
 
-    dropZone.addEventListener('dragover', dragOver);
-    dropZone.addEventListener('drop', drop);
+  
 
-    function dragStart(event) {
-        console.log('item is dragging...');
-        event.dataTransfer.setData('text', event.target.id);
-    }
+  dropZone.addEventListener('dragover', dragOver);
+  dropZone.addEventListener('drop', drop);
 
-    function dragOver(event) {
-        event.preventDefault();
-        console.log('item is over drop zone...');
-    }
+  export function dragStart(event) {
+    console.log('item is dragging...');
+    event.dataTransfer.setData('text', event.target.id);
+  }
 
-    function drop(event) {
-        event.preventDefault();
-        console.log('item dropped!');
-        const itemData = event.dataTransfer.getData('text');
-        const draggedItem = document.getElementById(itemData);
-        const playlist = document.querySelector('.playlist');
-    
-        // Check if the maximum limit is reached
-        if (playlist.children.length >= maxItemsInPlaylist) {
-            console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
-            error.play();
-            return; // Exit the function if limit is reached
-        }
+  export function dragOver(event) {
+      event.preventDefault();
+      console.log('item is over drop zone...');
+  }
 
-        if (draggedItem) {
-            const clone = draggedItem.cloneNode(true); // Clone the dragged item
-           const textContent = clone.textContent.trim(); // Retrieve text content of the clone
-            console.log(`Item "${textContent}" dropped!`); // Log the message with interpolated text content
-           playlist.appendChild(clone);
-        } else {
-            console.error('Dragged item not found.');
-        }
-    }
-    
+  export function drop(event) {
+      event.preventDefault();
+      console.log('item dropped!');
+      const itemData = event.dataTransfer.getData('text');
+      const draggedItem = document.getElementById(itemData);
+      const playlist = document.querySelector('.playlist');
+  
+      // Check if the maximum limit is reached
+      if (playlist.children.length >= maxItemsInPlaylist) {
+          console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
+          error.play();
+          return; // Exit the function if limit is reached
+      }
+
+      if (draggedItem) {
+          const clone = draggedItem.cloneNode(true); // Clone the dragged item
+         const textContent = clone.textContent.trim(); // Retrieve text content of the clone
+          console.log(`Item "${textContent}" dropped!`); // Log the message with interpolated text content
+         playlist.appendChild(clone);
+      } else {
+          console.error('Dragged item not found.');
+      }
 }
+
 let isSwiping = false;
 let startTime;
 
