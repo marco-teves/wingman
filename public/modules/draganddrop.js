@@ -4,7 +4,7 @@ import { error } from './audio.js';
 
 const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
-const maxItemsInPlaylist = 5;
+const maxItemsInPlaylist = 15;
 
 
 

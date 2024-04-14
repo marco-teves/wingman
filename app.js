@@ -1,8 +1,8 @@
 //app.js
 import * as crud from './crudFunctions.js';
 import express from 'express';
-
-
+import path from 'path';
+const __dirname = path.resolve();
 const app = express();
 const port = 8080;
 
@@ -31,8 +31,8 @@ app.get('/activities', async (req, res) => { // Handle requests for the root pat
   }
 });
 
-app.use((req, res, next) => {
-    res.status(404);
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
 
 

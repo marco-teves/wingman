@@ -1,8 +1,12 @@
-DYNAMICALLY CHANGE DIFFICULTY 
-add audio queues to signify a new part of the workout 
+DYNAMICALLY CHANGE DIFFICULTY [DONE]
+add audio queues to signify a new part of the workout [DONE]
 
 make colors change depending on if it is a rest time
 
-if position in array is a multiple of 2 then set it to rest
+if position in array is a multiple of 2 then set it to rest [DONE]
 
-text visual queues in middle of stopwatch
+text visual queues in middle of stopwatch [DONE]
+
+maybe add an info tab that displays the description of a workout?
+
+user table added, i should use it to log in etc

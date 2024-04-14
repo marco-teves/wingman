@@ -76,14 +76,30 @@ function getDifficulty() {
     const difficultyName = difficultyNames[slider.value];
     console.log('Difficulty level:', difficultyName);
 
+    const stopwatchOutline = document.getElementById('circle-outline');
+    stopwatchOutline.style.backgroundImage = "";
+
+    const nextWorkoutColor = document.getElementById('displayNextWorkoutName');
+    nextWorkoutColor.style.color = "";
 
     if (sliderValue === 1) {
-     return 60;
+        console.log('difficulty green blue');
+        stopwatchOutline.style.backgroundImage = "linear-gradient(#00FF00, #0000ff)";
+        nextWorkoutColor.style.color = "rgba(0, 255, 4, 0.4)";
+
+        return 60;
     } else if (sliderValue === 2) {
+        console.log('difficulty yellow orange');
+        stopwatchOutline.style.backgroundImage = "linear-gradient(#FFFD00, #f93a00)";
+        nextWorkoutColor.style.color = "rgba(255, 225, 0, 0.4)";
+
         return 45;
     } else { 
-        return 10;
-    };
+        console.log('difficulty red pink');
+        stopwatchOutline.style.backgroundImage = "linear-gradient(#FF007E, #FA1F00)";
+        nextWorkoutColor.style.color = "rgba(255, 0, 0, 0.4)";
 
-    
+        return 15;
+    };
 }
+

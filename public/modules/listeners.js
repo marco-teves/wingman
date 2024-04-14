@@ -81,15 +81,24 @@ export function confirmBtn() {
   const playlist = document.querySelector('.playlist');
   confirmButton.addEventListener('click', () => {
     const hasItems = playlist.children.length > 0;
-    if (hasItems) {
+    if (hasItems && !isRunning) {
       confirmButton.innerText = '! CONFIRMED !';
       confirmButton.style.backgroundColor = '#00ff1a';
       confirm.play();
+      getItemsInPlaylist();
+      getNamedArray();
+    } else if (hasItems && isRunning){
+      confirmButton.style.backgroundColor = '#515151';
+      confirmButton.innerText = 'ERROR: COUNTDOWN ALREADY RUNNING';
+      error.play();
+      console.log('cant change playlist while countdown is running');
     } else {
       confirmButton.style.backgroundColor = '#515151';
+      confirmButton.innerText = 'NO EXERCISES IN PLAYLIST';
+      error.play();
+      
     }
-    getItemsInPlaylist();
-    getNamedArray();
+    
   });
 
 }
