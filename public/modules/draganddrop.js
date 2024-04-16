@@ -6,12 +6,8 @@ const draggables = document.querySelectorAll('.workoutItem');
 const dropZone = document.querySelector('.playlist');
 const maxItemsInPlaylist = 15;
 
-
-
-  
-
-  dropZone.addEventListener('dragover', dragOver);
-  dropZone.addEventListener('drop', drop);
+dropZone.addEventListener('dragover', dragOver);
+dropZone.addEventListener('drop', drop);
 
   export function dragStart(event) {
     console.log('item is dragging...');
@@ -50,7 +46,7 @@ const maxItemsInPlaylist = 15;
 let isSwiping = false;
 let startTime;
 
-export function handleTouchDragging() {
+function handleTouchDragging() {
     let initialX; // Variable to store initial touch X position
     draggables.forEach(elem => {
       elem.addEventListener('touchstart', (event) => {

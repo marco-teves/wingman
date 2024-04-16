@@ -89,7 +89,7 @@ export function confirmBtn() {
       getNamedArray();
     } else if (hasItems && isRunning){
       confirmButton.style.backgroundColor = '#515151';
-      confirmButton.innerText = 'ERROR: COUNTDOWN ALREADY RUNNING';
+      confirmButton.innerText = 'WAIT FOR COUNTDOWN TO END BEFORE CONFIRMING';
       error.play();
       console.log('cant change playlist while countdown is running');
     } else {
