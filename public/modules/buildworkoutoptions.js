@@ -1,5 +1,5 @@
 //buildWorkoutOptions.js
-import {dragStart} from './draganddrop.js';
+import {dragStart, touchStart, touchMove, touchEnd} from './draganddrop.js';
 
 async function fetchActivities(){
     const response = await fetch('/activities');
@@ -23,6 +23,9 @@ export async function initOptions() {
         
         initActivity.draggable = true;
         initActivity.addEventListener('dragstart', dragStart);
+        initActivity.addEventListener('touchstart', touchStart);
+        initActivity.addEventListener('touchmove', touchMove);
+        initActivity.addEventListener('touchend', touchEnd);
         container.appendChild(initActivity);
         nextItemId++;
         

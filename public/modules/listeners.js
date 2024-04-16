@@ -79,6 +79,7 @@ export function deleteBtn(){
 export function confirmBtn() {
   const confirmButton = document.getElementById('confirmWorkout');
   const playlist = document.querySelector('.playlist');
+  
   confirmButton.addEventListener('click', () => {
     const hasItems = playlist.children.length > 0;
     if (hasItems && !isRunning) {

@@ -243,7 +243,6 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------everything to do with drop down menu ------------------------------------------*/
 
 .arrow-drop-down {
-    fill: green;
     display: flex;
     justify-content: center;
     z-index: 2;
@@ -251,21 +250,30 @@ body::-webkit-scrollbar-thumb{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    transition: all 0.5s;
 }
 
-.arrow-rotated {
-    transform:rotate(180deg);
+@keyframes dropDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#arrow-ico:active{
+    animation: dropDown 0.2s;
+}
+
+#arrow-ico:hover{
+    cursor: pointer;
     fill: #d7d7d7;
 }
 
-#arrow-ico{
-    transition: all 0.4s;
-}
-#arrow-ico:hover{
-    transform: scale(1.2);
-    fill: #00FF00;
-    cursor: pointer;
-}
 .dropDown{
     width: 100%;
     height: 100vh;

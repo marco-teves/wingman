@@ -15,8 +15,8 @@ dropZone.addEventListener('drop', drop);
   }
 
   export function dragOver(event) {
-      event.preventDefault();
-      console.log('item is over drop zone...');
+    event.preventDefault();
+    console.log('item is over drop zone...');
   }
 
   export function drop(event) {
@@ -45,62 +45,60 @@ dropZone.addEventListener('drop', drop);
 
 let isSwiping = false;
 let startTime;
+let startX;
+export function touchStart(event) {
+  
+  console.log('You touched an item!');
+  startTime = Date.now();
+  startX = event.touches[0].clientX; // Get initial X position
+  isSwiping = false;
+}
 
-function handleTouchDragging() {
-    let initialX; // Variable to store initial touch X position
-    draggables.forEach(elem => {
-      elem.addEventListener('touchstart', (event) => {
-        startTime = Date.now(); // Capture touch start timestamp
-        initialX = event.touches[0].clientX; // Get initial touch X coordinate
-      });
-  
-      elem.addEventListener('touchmove', (event) => {
-        const currentX = event.touches[0].clientX;
-        const movement = Math.abs(currentX - initialX); // Calculate movement in X direction
-  
-        // Adjust the threshold based on your needs (e.g., 50 pixels for a significant swipe)
-        if (movement > 2) {
-          isSwiping = true;
-        }
-      });
-  
-      elem.addEventListener('touchend', (event) => {
-        const endTime = Date.now();
-        const holdTime = endTime - startTime;
-  
-        if (holdTime >= 250 && !isSwiping) { // Check if hold time is over 1 second and no swipe detected
-          console.log('Element held for over 1 second!');
-  
-          // Similar logic to drop function here (assuming each draggable element has a unique ID):
-          const itemData = elem.id;
-          const draggedItem = document.getElementById(itemData);
-          const playlist = document.querySelector('.playlist');
-  
-          // Check if the maximum limit is reached (assuming you have a variable `maxItemsInPlaylist`)
-          if (playlist.children.length >= maxItemsInPlaylist) {
-            console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
-            error.play(); // Assuming you have an error sound effect or similar
-            return;
-          }
-  
-          if (draggedItem) {
-            const clone = draggedItem.cloneNode(true); // Clone the dragged item
-            const textContent = clone.textContent.trim(); // Retrieve text content of the clone
-            console.log(`Item "${textContent}" added!`); // Log the message with interpolated text content
-            playlist.appendChild(clone);
-          } else {
-            console.error('Dragged item not found.');
-          }
-  
-        } else {
-          console.log(isSwiping ? 'Swiped.' : 'Touch ended before 1 second.');
-        }
-  
-        // Reset swipe tracking for next touch interaction
-        isSwiping = false;
-      });
-    });
+export function touchMove(event) {
+
+  const currentX = event.touches[0].clientX;
+  const movementThreshold = 10;
+  if (Math.abs(currentX - startX) > movementThreshold) {
+    console.log('swipe detected, wont put it in playlist');
+    isSwiping = true;
   }
+}
+
+export function touchEnd(event) {
+  const endTime = Date.now();
+  const holdTime = endTime - startTime;
+
+  if (isSwiping) {
+    console.log('Swiped on the element!');
+    isSwiping = false; // Reset the flag for future touches
+  } else if (holdTime >= 250) {
+    console.log('Element held for over 0.25 seconds!');
+
+    const elem = event.target;
+
+    const itemData = elem.id;
+    const draggedItem = document.getElementById(itemData);
+    const playlist = document.querySelector('.playlist');
+
+    if (playlist.children.length >= maxItemsInPlaylist) {
+      console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
+      error.play();
+      return;
+    }
+
+    if (draggedItem) {
+      const clone = draggedItem.cloneNode(true);
+      const textContent = clone.textContent.trim();
+      console.log(`Item "${textContent}" added!`);
+      playlist.appendChild(clone);
+    } else {
+      console.error('Dragged item not found.');
+    }
+  } else {
+    console.log('Touch ended before 0.25 seconds.');
+  }
+}
+
 
 export function deleteItem() {
     const playlist = document.querySelector('.playlist');
