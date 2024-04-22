@@ -20,7 +20,7 @@ export function updateNamedArr() {
 
 
 
-export function startCountdown() {
+export async function startCountdown() {
   const timerElem = document.getElementById('timer');
   const displayNameElem = document.getElementById('displayWorkoutName');
   const displayNextNameElem = document.getElementById('displayNextWorkoutName');

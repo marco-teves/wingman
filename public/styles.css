@@ -243,6 +243,7 @@ body::-webkit-scrollbar-thumb{
 /* ------------------------everything to do with drop down menu ------------------------------------------*/
 
 .arrow-drop-down {
+    fill: #d7d7d7;
     display: flex;
     justify-content: center;
     z-index: 2;
@@ -266,7 +267,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 #arrow-ico:active{
-    animation: dropDown 0.2s;
+    /* animation: dropDown 0.2s; */
 }
 
 #arrow-ico:hover{
