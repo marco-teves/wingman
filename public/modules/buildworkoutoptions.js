@@ -34,7 +34,7 @@ export async function initOptions() {
 
         const workoutDurationTag = document.createElement('p');
         workoutDurationTag.textContent = '10 s';
-        workoutDurationTag.id = 'workoutName'; // Set the id
+        workoutDurationTag.id = 'workoutDuration'; // Set the id
         initActivity.appendChild(workoutDurationTag);
 
         container.appendChild(initActivity);
