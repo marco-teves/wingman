@@ -59,17 +59,28 @@ export async function initOptions() {
 }
 
 
-export function addWorkout(workoutName) {
+export function addWorkout(workoutName, duration) {
     let addedItemId = nextItemId + 1;
     const container = document.getElementById('options'); // Get the container where you want to add divs
     const className = 'workoutItem--created'
         
     const newActivity = document.createElement('div');
-    
-    newActivity.textContent = workoutName;
-    newActivity.id = 'item' + addedItemId;
     newActivity.classList.add(className);
     newActivity.draggable = true;
+
+
+    const workoutNameTag = document.createElement('p');
+    workoutNameTag.textContent = workoutName;
+    workoutNameTag.id = 'workoutName';
+    newActivity.appendChild(workoutNameTag);
+
+
+    newActivity.classList.add(className);
+    const workoutDurationTag = document.createElement('p');
+    workoutDurationTag.textContent = duration + ' s';
+    workoutDurationTag.id = 'workoutDuration';
+    newActivity.appendChild(workoutDurationTag);
+
     container.appendChild(newActivity);
     addedItemId++;
     newActivity.addEventListener('dragstart', dragStart);

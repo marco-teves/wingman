@@ -144,12 +144,10 @@ export function addBtn() {
                 alert('Please enter a valid whole number greater than 0 for the duration.');
             }
         } while (!Number.isInteger(duration) || duration <= 0);
-
-        // Prompt for workout description
+        
         description = prompt(`Enter a description for ${workoutName} (optional):`);
 
-        // Call the addWorkout function with the entered values
-        addWorkout(workoutName, duration, description);
+        addWorkout(workoutName, duration);
 
         console.log('Workout Name:', workoutName);
         console.log('Duration:', duration);
