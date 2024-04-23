@@ -20,6 +20,16 @@ app.get('/activities', async (req, res) => {
     }
 });
 
+app.get('/activityTimes', async (req, res) => {
+    try {
+        const activities = await crud.getActivityTimes();
+        res.json(activities);
+    } catch (error) {
+        res.status(500).send('Error fetching activities');
+    }
+});
+
+
 app.get('/workoutTimes', async (req, res) => {
   try {
       // Code to fetch all workout names and times from the database

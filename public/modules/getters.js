@@ -23,8 +23,11 @@ export async function getItemsInPlaylist() {
     let isFirstExercise = true;
 
     for (const workoutItem of workoutItems) {
-        const exerciseName = workoutItem.textContent.trim();
-        const exerciseTime = workoutTimes[exerciseName];
+        // Get the workout name from the workoutItem
+        const workoutName = workoutItem.querySelector('#workoutName').textContent.trim();
+
+        // Use the workout name to fetch the corresponding workout time
+        const exerciseTime = workoutTimes[workoutName];
         if (exerciseTime !== undefined) { 
             if (isFirstExercise) {
                 exerciseArr.push(readyTime);
@@ -33,7 +36,7 @@ export async function getItemsInPlaylist() {
             exerciseArr.push(exerciseTime);
             exerciseArr.push(restTime);
         } else {
-            console.log('Could not find time for exercise:', exerciseName);
+            console.log('Could not find time for exercise:', workoutName);
         }  
     }
     console.log('getters', exerciseArr);
@@ -47,6 +50,7 @@ export async function getItemsInPlaylist() {
     }
     exerciseArr.pop();
 }
+
 
 
 
@@ -66,13 +70,14 @@ export async function getNamedArray() {
         let isFirstExercise = true;
         
         workoutItems.forEach(workoutItem => {
-            const exerciseName = workoutItem.textContent.trim();
-            if (exerciseName !== '') {
+            const workoutName = workoutItem.querySelector('#workoutName').textContent.trim();
+
+            if (workoutName !== '') {
                 if (isFirstExercise) {
                     namedArr.push('get ready!');
                     isFirstExercise = false;
                 }
-                namedArr.push(exerciseName.toLowerCase());
+                namedArr.push(workoutName.toLowerCase());
                 namedArr.push("rest");
             } else {
                 console.log('Could not find time for exercise:', exerciseName);

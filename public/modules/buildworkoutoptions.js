@@ -6,39 +6,55 @@ async function fetchActivities(){
     const activities = await response.json();
     return activities;
 }
+async function fetchWorkoutTimes() {
+    const response = await fetch('/workoutTimes');
+    const workoutTimes = await response.json();
+    return workoutTimes;
+}
+
 //build the default workoutOptions
 export async function initOptions() {
     console.log('initOptions called');
-    
+
     const container = document.getElementById('options');
     const className = 'workoutItem';
 
-    const activityNames = await fetchActivities();
-    console.log(activityNames);
-    for (const workoutName of activityNames) {
-        const initActivity = document.createElement('div');
-        
-        initActivity.classList.add(className);
-        initActivity.id = 'item' + nextItemId;
-        initActivity.draggable = true;
-        initActivity.addEventListener('dragstart', dragStart);
-        initActivity.addEventListener('touchstart', touchStart);
-        initActivity.addEventListener('touchmove', touchMove);
-        initActivity.addEventListener('touchend', touchEnd);
+    try {
+        const activityNames = await fetchActivities();
+        const workoutTimes = await fetchWorkoutTimes();
 
-        // Create and append the <p> tag with id "workoutName"
-        const workoutNameTag = document.createElement('p');
-        workoutNameTag.textContent = workoutName;
-        workoutNameTag.id = 'workoutName'; // Set the id
-        initActivity.appendChild(workoutNameTag);
+        console.log(activityNames);
+        for (const workoutName of activityNames) {
+            const initActivity = document.createElement('div');
 
-        const workoutDurationTag = document.createElement('p');
-        workoutDurationTag.textContent = '10 s';
-        workoutDurationTag.id = 'workoutDuration'; // Set the id
-        initActivity.appendChild(workoutDurationTag);
+            initActivity.classList.add(className);
+            initActivity.id = 'item' + nextItemId;
+            initActivity.draggable = true;
+            initActivity.addEventListener('dragstart', dragStart);
+            initActivity.addEventListener('touchstart', touchStart);
+            initActivity.addEventListener('touchmove', touchMove);
+            initActivity.addEventListener('touchend', touchEnd);
 
-        container.appendChild(initActivity);
-        nextItemId++;  
+            const workoutNameTag = document.createElement('p');
+            workoutNameTag.textContent = workoutName;
+            workoutNameTag.id = 'workoutName';
+            initActivity.appendChild(workoutNameTag);
+
+            const workoutDuration = workoutTimes[workoutName];
+            if (workoutDuration !== undefined) {
+                const workoutDurationTag = document.createElement('p');
+                workoutDurationTag.textContent = workoutDuration + ' s'; // Set the duration
+                workoutDurationTag.id = 'workoutDuration'; // Set the id
+                initActivity.appendChild(workoutDurationTag);
+            } else {
+                console.log('Could not find duration for workout:', workoutName);
+            }
+
+            container.appendChild(initActivity);
+            nextItemId++;
+        }
+    } catch (error) {
+        console.error('Error initializing options:', error);
     }
 }
 

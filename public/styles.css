@@ -528,6 +528,12 @@ body::-webkit-scrollbar-thumb{
     cursor: move;
 }
 
+#workoutDuration{
+    font-size: 0.8em;
+    color: #393939;
+
+}
+
 .workoutInfo{
     display: flex;
     justify-content: space-evenly;
