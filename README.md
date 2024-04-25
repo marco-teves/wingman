@@ -67,7 +67,7 @@ displays the screen while waiting for dom elements to load.
 
 ## AI
 
-> How would i make this display milliseconds  instead of seconds?
+> How would i make this display milliseconds instead of seconds?
 
 Initially, written the code for it to be in seconds, but i felt that displaying it didnt make it feel 'urgent' enough.
 

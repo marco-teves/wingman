@@ -11,21 +11,33 @@ async function fetchWorkoutTimes() {
     const workoutTimes = await response.json();
     return workoutTimes;
 }
+// buildWorkoutOptions.js
 
-//build the default workoutOptions
+// Existing imports...
+
+async function fetchUserGenerated(){
+    const response = await fetch('/isUserGenerated');
+    const isUserGenerated = await response.json();
+    return isUserGenerated;
+}
+
 export async function initOptions() {
     console.log('initOptions called');
 
     const container = document.getElementById('options');
-    const className = 'workoutItem';
 
     try {
         const activityNames = await fetchActivities();
         const workoutTimes = await fetchWorkoutTimes();
+        const userGenerated = await fetchUserGenerated();
 
         console.log(activityNames);
-        for (const workoutName of activityNames) {
+        for (let i = 0; i < activityNames.length; i++) {
+            const workoutName = activityNames[i];
+            const isUserGenerated = userGenerated[i].activity_user_generated;
+
             const initActivity = document.createElement('div');
+            const className = isUserGenerated ? 'workoutItem--created' : 'workoutItem';
 
             initActivity.classList.add(className);
             initActivity.id = 'item' + nextItemId;
@@ -43,8 +55,8 @@ export async function initOptions() {
             const workoutDuration = workoutTimes[workoutName];
             if (workoutDuration !== undefined) {
                 const workoutDurationTag = document.createElement('p');
-                workoutDurationTag.textContent = workoutDuration + ' s'; // Set the duration
-                workoutDurationTag.id = 'workoutDuration'; // Set the id
+                workoutDurationTag.textContent = workoutDuration + ' s';
+                workoutDurationTag.id = 'workoutDuration';
                 initActivity.appendChild(workoutDurationTag);
             } else {
                 console.log('Could not find duration for workout:', workoutName);
@@ -57,6 +69,7 @@ export async function initOptions() {
         console.error('Error initializing options:', error);
     }
 }
+
 
 
 export function addWorkout(workoutName, duration) {

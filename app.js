@@ -9,6 +9,7 @@ const app = express();
 const port = 8080;
 
 app.use(express.static('public', { extensions: ['html'] }));
+app.use(express.json());
 
 app.get('/activities', async (req, res) => {
     try {
@@ -42,6 +43,30 @@ app.get('/workoutTimes', async (req, res) => {
       console.error(error);
       res.status(500).send('Error fetching workout times');
   }
+});
+
+app.get('/isUserGenerated', async (req, res) => {
+    try {
+        const isUserGenerated = await crud.isUserGenerated();
+        res.json(isUserGenerated);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching isUserGenerated data');
+    }
+});
+
+//post
+
+app.post('/addActivity', async (req, res) => {
+    console.log('Request body:', req.body);
+    try {
+        const { activityName, duration, description } = req.body;
+        await crud.addActivity(activityName, duration, description);
+        res.status(200).send('Activity added successfully');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error adding activity');
+    }
 });
 
 app.use((req, res) => {

@@ -45,25 +45,7 @@ export function handleArrowIconClick() {
   });
 }
 
-/* export function handleBrowserButtonClickAndExit() {
-  const browseButton = document.getElementById("browse");
-  const browserDiv = document.querySelector(".browse--hidden");
 
-  const handleToggle = () => {
-    browseOpen.play();
-    console.log("Toggling browser div");
-    browserDiv.classList.toggle("browse");
-    browserDiv.classList.toggle("browse--hidden");
-  };
-
-  // Event listener for both buttons
-  browseButton.addEventListener('click', handleToggle);
-  browserDiv.addEventListener('click', (event) => {
-    if (event.target.id === "browseExit") {
-      handleToggle();
-    }
-  });
-} */
 
 export function deleteBtn(){
   const confirmButton = document.getElementById('confirmWorkout');
@@ -109,51 +91,85 @@ export function confirmBtn() {
 } */
 
 export function saveBtn(){
-  document.getElementById('save').addEventListener('click', function() {
+  const browseButton = document.getElementById("infoTab");
+  const browserDiv = document.querySelector(".browse--hidden");
 
-    const playlistName = prompt('Enter playlist name:');
-    const authorName = prompt('Enter author name:');
+  const handleToggle = () => {
+    browseOpen.play();
+    console.log("Toggling browser div");
+    browserDiv.classList.toggle("browse");
+    browserDiv.classList.toggle("browse--hidden");
+  };
 
-    console.log('Playlist Name:', playlistName);
-    console.log('Author Name:', authorName);
+  // Event listener for both buttons
+  browseButton.addEventListener('click', handleToggle);
+  browserDiv.addEventListener('click', (event) => {
+    if (event.target.id === "browseExit") {
+      handleToggle();
+    }
   });
 }
 
 export function addBtn() {
-    document.getElementById('add').addEventListener('click', function() {
-        let workoutName;
-        let duration;
-        let description;
+  document.getElementById('add').addEventListener('click', async function() {
+      let workoutName;
+      let duration;
+      let description;
 
-        do {
-            workoutName = prompt('Enter workout name (or click cancel to cancel):');
-            if (workoutName === null) {
-                console.log('User cancelled the input.');
-                return;
-            }
-        } while (!workoutName);
+      do {
+          workoutName = prompt('Enter workout name (or click cancel to cancel):');
+          if (workoutName === null) {
+              console.log('User cancelled the input.');
+              return;
+          }
+      } while (!workoutName);
 
-        do {
-            const durationInput = prompt(`Enter the duration (in seconds) for ${workoutName} (or click cancel to cancel):`);
-            if (durationInput === null) {
-                console.log('User cancelled the input.');
-                return;
-            }
-            duration = parseInt(durationInput);
-            if (!Number.isInteger(duration) || duration <= 0) {
-                alert('Please enter a valid whole number greater than 0 for the duration.');
-            }
-        } while (!Number.isInteger(duration) || duration <= 0);
-        
-        description = prompt(`Enter a description for ${workoutName} (optional):`);
+      // Validate duration
+      do {
+          const durationInput = prompt(`Enter the duration (in seconds) for ${workoutName} (or click cancel to cancel):`);
+          if (durationInput === null) {
+              console.log('User cancelled the input.');
+              return;
+          }
+          duration = parseInt(durationInput);
+          if (!Number.isInteger(duration) || duration <= 0) {
+              alert('Please enter a valid whole number greater than 0 for the duration.');
+          }
+      } while (!Number.isInteger(duration) || duration <= 0);
+      
+      description = prompt(`Enter a description for ${workoutName} (optional):`);
 
-        addWorkout(workoutName, duration);
+      
+      try {
+          const response = await fetch('/addActivity', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  activityName: workoutName,
+                  duration: duration,
+                  description: description
+              })
+          });
 
-        console.log('Workout Name:', workoutName);
-        console.log('Duration:', duration);
-        console.log('Description:', description);
-    });
+          if (response.ok) {
+              console.log('Activity added successfully');
+          } else {
+              console.error('Error adding activity');
+          }
+      } catch (error) {
+          console.error('Error:', error);
+      }
+
+      addWorkout(workoutName, duration);
+
+      console.log('Workout Name:', workoutName);
+      console.log('Duration:', duration);
+      console.log('Description:', description);
+  });
 }
+
 
 
 

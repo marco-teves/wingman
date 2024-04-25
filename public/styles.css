@@ -311,8 +311,8 @@ body::-webkit-scrollbar-thumb{
 
 .tab{
     display: flex;
-    justify-content:space-between;
-    align-items:last baseline;
+    justify-content:center;
+    align-items:center;
     height: 8vh;
     width: 100%;
     
@@ -320,8 +320,8 @@ body::-webkit-scrollbar-thumb{
 
 
 .tab button{
-    width:35vw;
-    height: 100%;
+    width:50vw;
+    height: 90%;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     border:none;
@@ -405,7 +405,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 #browse{
-    width: 50%;
+    width: 100%;
     margin-left: 15%;
     margin-right:15%
 }
@@ -601,13 +601,12 @@ body::-webkit-scrollbar-thumb{
     align-items: center;
     top: 0;
     left: 0;
-    width: 43.5%;
+    width: 100%;
     height: 100%;
     z-index: 999;
     background-color: rgb(22, 22, 22);
     transition: all 0.5s;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-radius: 25px;
     border-style: solid;
     border-color: #d7d7d7;
     opacity: 1;
@@ -641,6 +640,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .browsePlaylists{
+    margin-top: 10vh;
     height: 80vh;
     width: 90%;
     background-color: #7c0000;

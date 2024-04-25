@@ -13,7 +13,7 @@ dropZone.addEventListener('drop', drop);
     console.log('item is dragging...');
     event.dataTransfer.setData('text', event.target.id);
   }
-
+  
   export function dragOver(event) {
     event.preventDefault();
     console.log('item is over drop zone...');

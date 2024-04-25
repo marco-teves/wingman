@@ -1,5 +1,4 @@
 // getters.js
-
 import { difficultyNames } from "./difficulties.js";
 import { error } from "./audio.js";
 let restTime = 0;
@@ -16,17 +15,15 @@ export async function getItemsInPlaylist() {
         throw new Error('Failed to fetch workout times');
     }
     const workoutTimes = await response.json();
-
+    console.log('getters recieved: ', workoutTimes);
     const playlist = document.querySelector('.playlist');
-    const workoutItems = playlist.querySelectorAll('.workoutItem');
+    const workoutItems = playlist.querySelectorAll('.workoutItem, .workoutItem--created'); // Compound selector
 
     let isFirstExercise = true;
 
     for (const workoutItem of workoutItems) {
-        // Get the workout name from the workoutItem
         const workoutName = workoutItem.querySelector('#workoutName').textContent.trim();
 
-        // Use the workout name to fetch the corresponding workout time
         const exerciseTime = workoutTimes[workoutName];
         if (exerciseTime !== undefined) { 
             if (isFirstExercise) {
@@ -49,10 +46,7 @@ export async function getItemsInPlaylist() {
         console.log('No exercises in playlist');
     }
     exerciseArr.pop();
-}
-
-
-
+};
 
 export async function getNamedArray() {
     namedArr = [];
@@ -65,7 +59,7 @@ export async function getNamedArray() {
         const workoutTimes = await response.json();
 
         const playlist = document.querySelector('.playlist');
-        const workoutItems = playlist.querySelectorAll('.workoutItem');
+        const workoutItems = playlist.querySelectorAll('.workoutItem, .workoutItem--created');
       
         let isFirstExercise = true;
         
@@ -83,11 +77,10 @@ export async function getNamedArray() {
                 console.log('Could not find time for exercise:', exerciseName);
             }
         });
-        namedArr.pop(); // Remove the extra "rest" added after the last exercise
+        namedArr.pop();
         console.log('namedArr', namedArr);
     } catch (error) {
         console.error('Error fetching workout times:', error);
-        // Handle error
     }
 }
 

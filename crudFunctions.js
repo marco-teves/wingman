@@ -37,6 +37,13 @@ export async function getActivities() {
     return rows;
 }
 
+export async function isUserGenerated(){
+    const db = await connectedDb;
+    const rows = await db.all('SELECT activity_user_generated FROM activities');
+    return rows;
+
+}
+
 export function getActivityDetails(activityId) {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('./wingman.sqlite');
@@ -59,8 +66,17 @@ export function getActivityDetails(activityId) {
 export async function addActivity(activityName, activityDuration, activityDescription) {
     const db = await connectedDb;
     const id = uuid();
-    await db.run('INSERT INTO activities (id, activity_name, activity_duration, activity_description, activity_user_generated) VALUES (?, ?, ?, ?, ?)', [id, activityName, activityDuration, activityDescription, TRUE]);
+
+    const existingActivity = await db.get('SELECT id FROM activities WHERE activity_name = ?', [activityName]);
+
+   /*  if (existingActivity) {
+        console.log('ERROR: Activity already exists in db!');
+        return;
+    } */
+    
+    await db.run('INSERT INTO activities (id, activity_name, activity_duration, activity_description, activity_user_generated) VALUES (?, ?, ?, ?, ?)', [id, activityName, activityDuration, activityDescription, 1]);
 }
+
 
 
 
