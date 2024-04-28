@@ -198,7 +198,7 @@ body::-webkit-scrollbar-thumb{
 
 
 .flashRed {
-    animation: flashRed 0.5s linear; /* Adjust duration and timing function as needed */
+    animation: flashRed 0.5s linear;
 }
 #timer {
     font-family: 'pillove', Arial, sans-serif;
@@ -234,13 +234,11 @@ body::-webkit-scrollbar-thumb{
 
 
 .stopwatchBtn:hover{
-    /* background: radial-gradient(#00FF00, #0000ff);
-    */
     background: rgb(255, 255, 255);
     transform: scale(1.05);
     cursor: pointer;
 }
-/* ------------------------everything to do with drop down menu ------------------------------------------*/
+
 
 .arrow-drop-down {
     fill: #d7d7d7;
@@ -266,12 +264,10 @@ body::-webkit-scrollbar-thumb{
     }
 }
 
-#arrow-ico:active{
-    /* animation: dropDown 0.2s; */
-}
 
 #arrow-ico:hover{
     cursor: pointer;
+    transform: scale(1.1);
     fill: #d7d7d7;
 }
 
@@ -291,7 +287,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .workoutSummary { 
-    padding-top: 5vh;
+    padding-top: 6vh;
     display: grid;
     height: 100vh;
     width: 100vw;
@@ -347,6 +343,7 @@ body::-webkit-scrollbar-thumb{
     border-right-style: solid;
     border-left-style: solid;
     height: 100%;
+    width: 100vw;
 }
 .options { 
     
@@ -354,8 +351,6 @@ body::-webkit-scrollbar-thumb{
     grid-area: options; 
     display: flex;
     background-color: #212121;
-    /* border-top-right-radius: 25px;
-    border-top-left-radius: 25px; */
     overflow-x: auto;
     white-space: nowrap;
     align-items: center;
@@ -379,6 +374,10 @@ body::-webkit-scrollbar-thumb{
     border-right-style: solid;
     border-left-style: solid;
     border-bottom-style: solid;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: #d7d7d7;
 }
 
 .utility button{
@@ -600,15 +599,13 @@ body::-webkit-scrollbar-thumb{
     position: fixed;
     align-items: center;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     z-index: 999;
     background-color: rgb(22, 22, 22);
     transition: all 0.5s;
-    border-radius: 25px;
-    border-style: solid;
-    border-color: #d7d7d7;
+   
+    
     opacity: 1;
     visibility: visible;
 }
@@ -617,19 +614,31 @@ body::-webkit-scrollbar-thumb{
     justify-content: center;
     align-items: center;
     padding: 5vh;
-    width: 30%;
+    width: 100%;
     height: 10%;
     fill: #d7d7d7;
     transition: all 0.4s;
 }
 #browseExit{
-    top: 0;
-    right: 0;
-    width: 10vh;
-    height: 5vh;
-    fill: #d7d7d7;
+    
+    width: 500px;;
+    height: 8vh;
+    background: #4c4c4c;
+    color: #d7d7d7;
     transition: all 0.4s;
+    border:none;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    cursor: pointer;
+    font-weight: bolder;
+}
 
+#browseExit:hover{
+    fill: #cdcdcd;
+}
+
+#browseExit:active{
+    fill: #2fff00;
 }
 .browse--hidden {
     width: 0vh;
@@ -642,27 +651,63 @@ body::-webkit-scrollbar-thumb{
 .browsePlaylists{
     margin-top: 10vh;
     height: 80vh;
-    width: 90%;
-    background-color: #7c0000;
+    width: 500px;
+    background-color: #111111;
     overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
+    
+}
+.browsePlaylists::-webkit-scrollbar{
+    height: 6px;
 }
 
-.playlistOptions{
+.browsePlaylists::-webkit-scrollbar-thumb{
+    background-color: #26c038;
+    border-radius: 50px;
+}
+
+.workoutDescriptions{
+    display: flex;
+    flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
-    font-style: italic;
-    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 10vh;
+    height: 50vh;
     background-color: #027000;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border-style: solid;
     border-color: #027000;
-    
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    border-radius: 25px;
+    padding-bottom: 2vh;
+    overflow-y: auto;
 }
 
 .playlistOptions:hover{
-    
     background-color: #03b400;
+}
+
+#iframe{
+   
+    height: 25vh;
+    border: none;
+    border-radius: 25px;
+}
+
+#workoutInfoName{
+    font-size: 1.25em;
+    
+    color: #d7d7d7;
+    margin-top: 2vh;
+    margin-bottom : 2vh;
+}
+
+#workoutInfoDescription{
+    
+    margin-left: 2vh;
+    margin-right: 2vh;
 }

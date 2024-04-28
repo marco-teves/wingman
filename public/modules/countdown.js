@@ -17,9 +17,6 @@ export function updateNamedArr() {
   displayName = namedArr;
 }
 
-
-
-
 export async function startCountdown() {
   const timerElem = document.getElementById('timer');
   const displayNameElem = document.getElementById('displayWorkoutName');

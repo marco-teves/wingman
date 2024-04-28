@@ -4,7 +4,7 @@ import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './c
 import { browseOpen, menuOpen, error, confirm } from './audio.js';
 import { deleteItem } from './draganddrop.js';
 import { getNamedArray, getItemsInPlaylist, exerciseArr} from './getters.js';
-import { addWorkout } from './buildworkoutoptions.js';
+import { addWorkout, initOptions } from './buildworkoutoptions.js';
 
 export function timerBtnListener() {
     const timerBtn = document.getElementById("playBtn");
@@ -110,7 +110,7 @@ export function saveBtn(){
   });
 }
 
-export function addBtn() {
+export async function addBtn() {
   document.getElementById('add').addEventListener('click', async function() {
       let workoutName;
       let duration;
@@ -155,6 +155,8 @@ export function addBtn() {
 
           if (response.ok) {
               console.log('Activity added successfully');
+              // After adding the activity, refresh the options
+              await refreshOptions();
           } else {
               console.error('Error adding activity');
           }
@@ -162,14 +164,20 @@ export function addBtn() {
           console.error('Error:', error);
       }
 
-      addWorkout(workoutName, duration);
-
       console.log('Workout Name:', workoutName);
       console.log('Duration:', duration);
       console.log('Description:', description);
   });
 }
 
+
+async function refreshOptions() {
+  const container = document.getElementById('options');
+  container.innerHTML = ''; // Clear existing options
+
+ 
+  await initOptions();
+}
 
 
 

@@ -69,10 +69,10 @@ export async function addActivity(activityName, activityDuration, activityDescri
 
     const existingActivity = await db.get('SELECT id FROM activities WHERE activity_name = ?', [activityName]);
 
-   /*  if (existingActivity) {
+   if (existingActivity) {
         console.log('ERROR: Activity already exists in db!');
         return;
-    } */
+    }
     
     await db.run('INSERT INTO activities (id, activity_name, activity_duration, activity_description, activity_user_generated) VALUES (?, ?, ?, ?, ?)', [id, activityName, activityDuration, activityDescription, 1]);
 }

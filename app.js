@@ -11,6 +11,7 @@ const port = 8080;
 app.use(express.static('public', { extensions: ['html'] }));
 app.use(express.json());
 
+//get
 app.get('/activities', async (req, res) => {
     try {
         const activities = await crud.getActivityNames();

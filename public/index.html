@@ -71,22 +71,13 @@
         <div class="utility">
           
           <button id="erase" aria-label="Delete Current Workout Playlist"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
-          <button id="save" aria-label="Save Entire Playlist"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg></button>
+          <p>DIFFICULTY: </p>
           <input type="range" min="1" max="3" value="1" class="slider" id="difficultySlider" aria-label="Difficulty Slider">
           
           <!-- <button id="browse"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q146 0 255.5 91.5T872-559h-82q-19-73-68.5-130.5T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h80v120h-40L168-552q-3 18-5.5 36t-2.5 36q0 131 92 225t228 95v80Zm364-20L716-228q-21 12-45 20t-51 8q-75 0-127.5-52.5T440-380q0-75 52.5-127.5T620-560q75 0 127.5 52.5T800-380q0 27-8 51t-20 45l128 128-56 56ZM620-280q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Z"/></svg></button> -->
           <button id="add"aria-label="Add New Workout"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
         </div>
 
-        <!-- <div class="menu">
-          <h1>?</h1>
-          <div class="hints">
-            <p id="hintInfo">hover over stuff to see more info!</p>
-          </div>
-          <div class="difficulty">
-            <input type="range" min="1" max="3" value="1" class="slider" id="difficultySlider">
-          </div>
-        </div> -->
         <div class="confirm">
           <button id="confirmWorkout">PRESS TO CONFIRM</button>
         </div>
@@ -97,14 +88,15 @@
       
       <div class="browsePlaylists" id="browsePlaylists">
         <template id="playlistOptionsTemplate">
-        <div class="playlistOptions">
-          <p>INSERT WORKOUT NAME</p>
-          <p>insert description</p>
+        <div class="workoutDescriptions">
+          <p id="workoutInfoName">INSERT WORKOUT NAME</p>
+          <iframe id="iframe" src="https://www.youtube.com/embed/I9fsqKE5XHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p id="workoutInfoDescription">SUPER HELPFUL DESCRIPTION HERE iHPIHGUOEVLKNEIPGHJPIEJVPIJvkhvouihjvrivj[rwjv-9wevjovjirh oi ikpr </p>
         </div>
       </template>
       </div>
       <div class="exit">
-        <button id="browseExit">exit</button>
+        <button id="browseExit">^BACK TO SETTINGS^</button>
       </div>
     </div>
   </div>
