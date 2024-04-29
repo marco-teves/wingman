@@ -4,6 +4,7 @@ import { tenSecWarn, restWarn, finishWarn, menuOpen, getReady, pause, unpause, n
 import { exerciseArr, namedArr } from './getters.js';
 
 export let isRunning = false;
+export let notCompleted = true;
 export let isPaused = false;
 
 const circle = document.querySelector(".circle-outline");
@@ -21,6 +22,7 @@ export async function startCountdown() {
   const timerElem = document.getElementById('timer');
   const displayNameElem = document.getElementById('displayWorkoutName');
   const displayNextNameElem = document.getElementById('displayNextWorkoutName');
+  const socialIcons = document.querySelector('.socialIcons');
   circle.classList.toggle("pulse");
 
   if (!isRunning) {
@@ -28,7 +30,7 @@ export async function startCountdown() {
     let seconds = workoutArr[workoutIndex];
     let displayNameIndex = 0;
     let displayNameText = displayName[displayNameIndex];
-
+    
     function countdown() {
       isRunning = true;
 
@@ -87,6 +89,9 @@ export async function startCountdown() {
               finishWarn.play();
               isRunning = false;
               circle.classList.toggle("pulse");
+              notCompleted = false;
+              socialIcons.style.fill = '';
+              socialIcons.style.fill = 'green';
             }
           }
         }

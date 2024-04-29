@@ -1,6 +1,6 @@
 
 import { hideLoadScreen } from "./modules/loadscreen.js";
-import { timerBtnListener, /* handleBrowserButtonClickAndExit */ handleArrowIconClick, deleteBtn, confirmBtn, saveBtn, addBtn /*  difficultySlider */} from "./modules/listeners.js";
+import { timerBtnListener,handleArrowIconClick, deleteBtn, confirmBtn, saveBtn, addBtn, socialIcons} from "./modules/listeners.js";
 import {dupeWorkoutItems} from "./modules/dupeitems.js";
 
 
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     buildPlaylist();
     addBtn();
     initOptions();
+    socialIcons();
 });
 
 

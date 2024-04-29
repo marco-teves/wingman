@@ -21,11 +21,16 @@ The stopwatch page is the main part of the app that the user will be spending th
 
     - Users at any time, when the countdown is running, are able to pause the countdown timer using the **Pause** button. Visual and auditory feedback are given to the user when it is pressed. The user can press it again to resume the session.
 
+- Social media share buttons:
+    - Users will be able to click on the respective social media icons to share their *completed* workout. The user must complete their workout to be able to share to social media. 
+
 ### The Settings Menu
 
 This menu will be revealed as soon as the user clicks on the arrow button. This is the page that the user will interact with when creating, editing and deleting workout sessions and activities. It is made up of the following components:
 
- - **Workout Options:** This area of the settings menu will display the default and custom workouts from the database. The user will be able to scroll on the x-axis to search for a specific workout. Each workout item is draggable and can be dropped into the playlist section.
+ - **Workout Options:** This area of the settings menu will display the default and user-generated workouts from the database. The user will be able to scroll on the x-axis to search for a specific workout. Each workout item is draggable and can be dropped into the playlist section.
+
+    - **Default** and **User-Generated** activities will be coloured white and green respectively.
 
  - The **Playlist** is the area that the user will use to drop workout items onto. At this point of writing the README, the playlist limit is set to 5 items. 
 
@@ -41,12 +46,20 @@ This menu will be revealed as soon as the user clicks on the arrow button. This 
 
 ## How to use
 
-- after downloading folder, run ``` cd wingman ``` to connect to the folder
-- then run ``` npm install i ``` to install node modules
-- after that, run ``` npm start``` which will start the server on port 8080
+1) after downloading folder, run ``` cd wingman ``` to connect to the folder
+2) then run ``` npm install i ``` to install node modules
+3) after that, run ``` npm start``` OR ``` node app.js``` which will start the server on port 8080.
 
+    - On the terminal, it should say:
+> Database migration starting
 
+> Server is running on http://localhost:8080
 
+> Database migration DONE
+
+4) Then CTRL + Click on ```http://localhost:8080```, OR on your chosen browser, visit http://localhost:8080
+
+5) If you wish to exit the server, in your terminal CTRL + C to close the server.
 
 ## Key features
 

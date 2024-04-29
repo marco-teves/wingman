@@ -1,10 +1,11 @@
 //listeners.js
 
-import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr } from './countdown.js';
+import { startCountdown, isRunning, updateWorkoutArr, updateNamedArr, notCompleted } from './countdown.js';
 import { browseOpen, menuOpen, error, confirm } from './audio.js';
 import { deleteItem } from './draganddrop.js';
 import { getNamedArray, getItemsInPlaylist, exerciseArr} from './getters.js';
 import { addWorkout, initOptions } from './buildworkoutoptions.js';
+import { addSocialShare } from './socialIcons.js';
 
 export function timerBtnListener() {
     const timerBtn = document.getElementById("playBtn");
@@ -173,12 +174,22 @@ export async function addBtn() {
 
 async function refreshOptions() {
   const container = document.getElementById('options');
-  container.innerHTML = ''; // Clear existing options
-
- 
+  container.innerHTML = '';
   await initOptions();
 }
 
+
+export function socialIcons() {
+  const socialIcons = document.querySelector('.socialIcons');
+  socialIcons.addEventListener('click', () => {
+    if (notCompleted === false) {
+      addSocialShare();
+    } else {
+      error.play();
+      alert('Complete your workout first before sharing it!');
+    }
+  });
+}
 
 
 

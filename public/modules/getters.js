@@ -5,6 +5,7 @@ let restTime = 0;
 const readyTime = 3;
 export let exerciseArr = [];
 export let namedArr = [];
+export let getDifficultyName = '';
 
 export async function getItemsInPlaylist() {
     exerciseArr = [];
@@ -50,7 +51,6 @@ export async function getItemsInPlaylist() {
 
 export async function getNamedArray() {
     namedArr = [];
-
     try {
         const response = await fetch('/workoutTimes');
         if (!response.ok) {
@@ -91,7 +91,7 @@ async function getDifficulty() {
     const slider = document.getElementById('difficultySlider');
     const sliderValue = parseInt(slider.value);
     const difficultyName = difficultyNames[slider.value];
-    console.log('Difficulty level:', difficultyName);
+    getDifficultyName = difficultyName;
 
     arrowIconColor.style.fill = "";
 

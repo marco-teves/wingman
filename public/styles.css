@@ -102,14 +102,23 @@ body::-webkit-scrollbar-thumb{
     opacity: 0;
     visibility: hidden;
 }
-.info{
+.socialIcons{
     display: flex;
+    justify-content: space-evenly;
     padding-top: 3vh;
-    fill: rgb(90, 90, 90);
+    fill: rgb(60, 60, 60);
+    width: 100px;
+}
+
+#facebook,
+#twitter{
+    cursor: pointer;
+    transform: scale(0.7);
     transition: all 0.4s;
 }
-.info:hover{
-    transform: scale(1.1);
+#facebook:hover,
+#twitter:hover{
+    transform: scale(1);
     fill: #d7d7d7;
 }
 
@@ -263,11 +272,15 @@ body::-webkit-scrollbar-thumb{
         transform: translateY(0);
     }
 }
-
+#arrow-ico{
+    
+    transition: all 0.3s;
+    
+}
 
 #arrow-ico:hover{
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.3);
     fill: #d7d7d7;
 }
 
@@ -346,7 +359,6 @@ body::-webkit-scrollbar-thumb{
     width: 100vw;
 }
 .options { 
-    
     height: 100%;
     grid-area: options; 
     display: flex;
