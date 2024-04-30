@@ -1,5 +1,4 @@
 // server.js
-
 import express from 'express';
 import path from 'path';
 import * as crud from './crudFunctions.js';
@@ -53,6 +52,16 @@ app.get('/isUserGenerated', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching isUserGenerated data');
+    }
+});
+
+app.get('/getInfoPageData', async (req, res) => {
+    try{
+        const infoPageData = await crud.getInfoPageData();
+        res.json(infoPageData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching info page data');
     }
 });
 

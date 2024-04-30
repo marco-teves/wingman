@@ -30,7 +30,6 @@ export async function getActivityTimes() {
     return rows.map(row => row.activity_name);
 }
 
-
 export async function getActivities() {
     const db = await connectedDb;
     const rows = await db.all('SELECT activity_name, activity_duration FROM activities');
@@ -61,6 +60,13 @@ export function getActivityDetails(activityId) {
     });
 }
 
+export async function getInfoPageData() {
+    const db = await connectedDb;
+    const rows = await db.all('SELECT activity_name, activity_duration, activity_description FROM activities');
+    return rows;
+
+}
+
 //adder functions
 
 export async function addActivity(activityName, activityDuration, activityDescription) {
@@ -73,7 +79,6 @@ export async function addActivity(activityName, activityDuration, activityDescri
         console.log('ERROR: Activity already exists in db!');
         return;
     }
-    
     await db.run('INSERT INTO activities (id, activity_name, activity_duration, activity_description, activity_user_generated) VALUES (?, ?, ?, ?, ?)', [id, activityName, activityDuration, activityDescription, 1]);
 }
 

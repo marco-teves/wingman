@@ -660,7 +660,7 @@ body::-webkit-scrollbar-thumb{
     transition: opacity 0.5s;
 }
 
-.browsePlaylists{
+.browseInfo{
     margin-top: 10vh;
     height: 80vh;
     width: 500px;
@@ -670,11 +670,11 @@ body::-webkit-scrollbar-thumb{
     align-items: center;
     
 }
-.browsePlaylists::-webkit-scrollbar{
+.browseInfo::-webkit-scrollbar{
     height: 6px;
 }
 
-.browsePlaylists::-webkit-scrollbar-thumb{
+.browseInfo::-webkit-scrollbar-thumb{
     background-color: #26c038;
     border-radius: 50px;
 }
@@ -689,7 +689,7 @@ body::-webkit-scrollbar-thumb{
     height: 50vh;
     background-color: #027000;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-style: solid;
     border-color: #027000;
     margin-top: 0.5vh;
@@ -703,23 +703,17 @@ body::-webkit-scrollbar-thumb{
     background-color: #03b400;
 }
 
-#iframe{
-   
-    height: 25vh;
-    border: none;
-    border-radius: 25px;
-}
 
 #workoutInfoName{
-    font-size: 1.25em;
-    
+    font-size: 2em;
     color: #d7d7d7;
     margin-top: 2vh;
     margin-bottom : 2vh;
 }
 
 #workoutInfoDescription{
-    
+    word-wrap: break-word;
     margin-left: 2vh;
     margin-right: 2vh;
+
 }

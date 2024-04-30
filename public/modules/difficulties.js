@@ -1,5 +1,5 @@
 export const difficultyNames = {
-    '1': 'Lenient',
+    '1': 'lenient',
     '2': 'Standard',
-    '3': 'HYPERWINGMAN'
+    '3': 'EXPERT'
 };

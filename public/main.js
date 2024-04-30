@@ -6,7 +6,7 @@ import {dupeWorkoutItems} from "./modules/dupeitems.js";
 
 import { scrollLeftRight, adjustDifficultySlider} from "./modules/animations.js";
 /* import { initializeTooltips } from "./modules/hints.js"; */
-import { buildPlaylist } from "./modules/buildbrowser.js";
+import { buildInfoBrowser } from "./modules/buildbrowser.js";
 import { initOptions } from "./modules/buildworkoutoptions.js";
 
 console.log("Start countdown function called.");
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     confirmBtn();
     saveBtn();
     /* difficultySlider(); */
-    buildPlaylist();
+    buildInfoBrowser();
     addBtn();
     initOptions();
     socialIcons();
