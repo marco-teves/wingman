@@ -4,16 +4,14 @@ import { difficultyNames } from "./difficulties.js";
 
 export function scrollLeftRight() {
     const options = document.querySelector('.options');
-  
     options.addEventListener('wheel', function(event) {
-        if (event.deltaY !== 0) {
-            const scrollAmount = event.deltaY * 3;
-            options.scrollTo({
-                left: options.scrollLeft + scrollAmount,
-                behavior: 'smooth'
-            });
-
-                event.preventDefault();
+    if (event.deltaY !== 0) {
+        const scrollAmount = event.deltaY * 3;
+        options.scrollTo({
+            left: options.scrollLeft + scrollAmount,
+            behavior: 'smooth'
+        });
+        event.preventDefault();
         }
     });
 }

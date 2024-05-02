@@ -9,38 +9,37 @@ const maxItemsInPlaylist = 15;
 dropZone.addEventListener('dragover', dragOver);
 dropZone.addEventListener('drop', drop);
 
-  export function dragStart(event) {
-    console.log('item is dragging...');
-    event.dataTransfer.setData('text', event.target.id);
-  }
+export function dragStart(event) {
+  console.log('item is dragging...');
+  event.dataTransfer.setData('text', event.target.id);
+}
   
-  export function dragOver(event) {
-    event.preventDefault();
-    console.log('item is over drop zone...');
+export function dragOver(event) {
+  event.preventDefault();
+  console.log('item is over drop zone...');
+}
+
+export function drop(event) {
+  event.preventDefault();
+  console.log('item dropped!');
+  const itemData = event.dataTransfer.getData('text');
+  const draggedItem = document.getElementById(itemData);
+  const playlist = document.querySelector('.playlist');
+
+  if (playlist.children.length >= maxItemsInPlaylist) {
+    console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
+    error.play();
+    return;
   }
 
-  export function drop(event) {
-      event.preventDefault();
-      console.log('item dropped!');
-      const itemData = event.dataTransfer.getData('text');
-      const draggedItem = document.getElementById(itemData);
-      const playlist = document.querySelector('.playlist');
-  
-      // Check if the maximum limit is reached
-      if (playlist.children.length >= maxItemsInPlaylist) {
-          console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
-          error.play();
-          return; // Exit the function if limit is reached
-      }
-
-      if (draggedItem) {
-          const clone = draggedItem.cloneNode(true); // Clone the dragged item
-         const textContent = clone.textContent.trim(); // Retrieve text content of the clone
-          console.log(`Item "${textContent}" dropped!`); // Log the message with interpolated text content
-         playlist.appendChild(clone);
-      } else {
-          console.error('Dragged item not found.');
-      }
+  if (draggedItem) {
+    const clone = draggedItem.cloneNode(true);
+    const textContent = clone.textContent.trim();
+    console.log(`Item "${textContent}" dropped!`);
+    playlist.appendChild(clone);
+  } else {
+    console.error('Dragged item not found.');
+  }
 }
 
 let isSwiping = false;
@@ -50,12 +49,11 @@ export function touchStart(event) {
   
   console.log('You touched an item!');
   startTime = Date.now();
-  startX = event.touches[0].clientX; // Get initial X position
+  startX = event.touches[0].clientX;
   isSwiping = false;
 }
 
 export function touchMove(event) {
-
   const currentX = event.touches[0].clientX;
   const movementThreshold = 10;
   if (Math.abs(currentX - startX) > movementThreshold) {
@@ -70,7 +68,7 @@ export function touchEnd(event) {
 
   if (isSwiping) {
     console.log('Swiped on the element!');
-    isSwiping = false; // Reset the flag for future touches
+    isSwiping = false;
   } else if (holdTime >= 250) {
     console.log('Element held for over 0.25 seconds!');
 
@@ -101,10 +99,10 @@ export function touchEnd(event) {
 
 
 export function deleteItem() {
-    const playlist = document.querySelector('.playlist');
-    while (playlist.firstChild) {
+  const playlist = document.querySelector('.playlist');
+  while (playlist.firstChild) {
     playlist.removeChild(playlist.firstChild);
-    }
-    click.play();
-    console.log('All items deleted from the playlist.');
+  }
+  click.play();
+  console.log('All items deleted from the playlist.');
 }

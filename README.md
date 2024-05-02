@@ -26,21 +26,30 @@ The stopwatch page is the main part of the app that the user will be spending th
 
 ### The Settings Menu
 
-This menu will be revealed as soon as the user clicks on the arrow button. This is the page that the user will interact with when creating, editing and deleting workout sessions and activities. It is made up of the following components:
+This menu will be revealed as soon as the user clicks on the arrow button. This is the page that the user will interact with when creating, editing and deleting workout sessions and activities. It is made up of the following components from top to bottom:
 
- - **Workout Options:** This area of the settings menu will display the default and user-generated workouts from the database. The user will be able to scroll on the x-axis to search for a specific workout. Each workout item is draggable and can be dropped into the playlist section.
+- **Workout Info Button** Opens up the workout info menu where the user can scroll up and down to view every workout in the database. It will show the name, duration and description for users who want to know more about a specific workout.
+
+- **Workout Options:** This area of the settings menu will display the default and user-generated workouts from the database. The user will be able to scroll on the x-axis to search for a specific workout. Each workout item is draggable and can be dropped into the playlist section.
+
+    #### Note: on mobile, you need to touch and hold then release to drop the item to the playlist
 
     - **Default** and **User-Generated** activities will be coloured white and green respectively.
 
- - The **Playlist** is the area that the user will use to drop workout items onto. At this point of writing the README, the playlist limit is set to 5 items. 
+- The **Playlist** is the area that the user will use to drop workout items onto. Currently, the playlist limit is set to 15 items.
+
+    - **Justification:** Initially, I designed it to have around 6 drop down menues that acted as slots for the user to put their activities in. This proved to be cumbersome and limited so I opted for something that the user is already familiar with; playlists similar to Spotify, Youtube etc. This made the user experience more intuitive.
 
  - To manipulate the playlist, difficulty and workout items, users will interact with the **Utility Bar** that is located below the playlist. It contains several buttons and all buttons will play a button click sound:
     
     - **Delete Button** will delete the entire playlist. Pressing the delete button after confirming a workout will turn grey.
+        - **Justification:** couldn't quite figure out how to drag and drop an item already in the playlist to anywhere else to simulate deleting. Instead I added a button that deletes all items.
 
     - **Difficulty Slider** will set the difficulty of the session, adjusting the time allowed for rests. When the confirm button is pressed, the Stop Watch UI will change colour to reflect on the difficulty.
+        - **Justification:** Wanted a more intuitive user experiece, difficulty are color coded. However, this assumes that the user is not colourblind and does not have any setting to change colour.
 
     - **Add Workout Button** will allow the user to add a custom workout activity. Will display a pop up asking the user to fill out the workout name, duration and description.
+        - **Justification:** Because it is located in the utility bar, In my opinion this makes editing and adding activities more streamlined. (this applies to all buttons in the utility bar)
 
 - The **Confirm Button** will read all the workout items inside the playlist, and will send it to the stopwatch. Initially it is greyed out, telling the user that they would need to fill out the playlist first. To make sure the user does so, when pressed it will flash red and play an error sound to indicate the playlist is empty. The button will turn green if there are workouts in the playlist. Users will be able to change the workouts and re-confirm to update the playlist.
 
@@ -61,24 +70,11 @@ This menu will be revealed as soon as the user clicks on the arrow button. This 
 
 5) If you wish to exit the server, in your terminal CTRL + C to close the server.
 
-## Key features
 
-
-
-### The stopwatch
-
-Features a stopwatch that will go through the workoutArray until it ends. Has animations to warn the user if they have a specific time left/finished, using custom made sound cues.
-
-### Settings menu
-
-Features a drop down menu that acts as a central hub for everything the user can tweak. The user can use the drag and drop feature to plan their workouts, view their stats or find other peoples workouts (work in progress)
-
-### Preload screen
-
-(currently set to 1s)
-displays the screen while waiting for dom elements to load.
 
 ## AI
+
+### Prompts to develop the countdown.js
 
 > How would i make this display milliseconds instead of seconds?
 
@@ -86,5 +82,26 @@ Initially, written the code for it to be in seconds, but i felt that displaying 
 
 It changed some of my code to reflect this and introduced the formatTime function.
 
+### Prompts to develop draganddrop.js
+
+> I want to add touch functionality for my drag and drop js file, using my drag and drop functions, how would you approach adding touch functionality? ( i pasted my existing drag and drop code here)
+
+The AI initially proposed to measure when the touch started, and the co-ordinates of where touch ended to determine if the user dragged and dropped it into the playlist div area. I tested the code it gave me, but i felt like it wasnt the right approach and was too complex so I proposed getting the user to touch and hold an activity to add it to the workout playlist (see next prompt).
 
 
+> Similar to my drag and drop functions, i would like to measure the time between the touch start and touch end, and if the difference is greater than 250 ms, i would like to data transfer the text of the playlist item and clone and append it to the playlist div.
+
+I recognized that users who are on mobile may accidentally touch an item, so i implemented a system that checked the difference between the touch start time and end time so the user has to hold for a specific time to add it to the playlist.
+
+> I added code that checks when the user holds, if they move, it will be detected as a swipe, which cancells the data transfer to the playlist. Why is it always detecting it as a swipe?
+
+
+Because of the way the options div displays each activity, the user will need to scroll/swipe on the x axis to browse each activity item. The issue is that the user will inevitably touch a workout item, and the current system doesnt recognize if the user wants to swipe or add an item to the playlist. The AI added minor modifications to my code, specifically adding a threshold that detects if the user has moved more than 10px on the x axis - which will detect as a swipe if so.
+
+### AI Prompts for Styling styles.css
+
+> How can i animate my stopwatch div to pulse every second?
+
+I thought that I would have to use JavaScript to animate the stop watch to pulse, but instead the AI introduced me to the **@key-frames** in css. To understand it more, I looked at the MDN docs for it and learnt how to make custom animations for my app. I then used this to make my own custom animations for the error buttons flashing red and for the drop down.
+
+###

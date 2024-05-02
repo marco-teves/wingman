@@ -46,7 +46,6 @@ export async function startCountdown() {
       displayNameText = displayName[displayNameIndex];
       displayNameElem.innerText = displayNameText;
 
-      // index dependent audio cues
       if (workoutIndex % 2 === 0 && workoutIndex !== 0) {
         restWarn.play();
       }
@@ -62,7 +61,6 @@ export async function startCountdown() {
           seconds -= 0.01;
           timerElem.innerText = formatTime(seconds);
 
-          // timer dependent audio cues
           if (seconds >= 10.1) {
             timerElem.style.color = 'white';
           } else if (seconds <= 10 && seconds >= 9.99) {
@@ -123,9 +121,6 @@ pauseBtn.addEventListener('click', () => {
     }
   }
 });
-
-
-
 
 export function formatTime(timeInSeconds) {
     const formattedTime = Math.max(0, timeInSeconds).toFixed(2);

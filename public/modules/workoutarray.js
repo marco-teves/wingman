@@ -1,5 +1,4 @@
 
-
 export const workoutArr = [15,10,15,11];
 
 export const workouts = {
@@ -8,4 +7,3 @@ export const workouts = {
     '3': 'Squats',
 };
 
-//112332
