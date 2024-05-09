@@ -24,7 +24,7 @@ export async function buildInfoBrowser() {
 
         const descriptionParagraph = document.createElement('p');
         descriptionParagraph.id = 'workoutInfoDescription';
-        descriptionParagraph.textContent = activity.activity_description; // Access activity_description property
+        descriptionParagraph.textContent = activity.activity_description;
         activityDiv.appendChild(descriptionParagraph);
 
         infoDiv.appendChild(activityDiv);

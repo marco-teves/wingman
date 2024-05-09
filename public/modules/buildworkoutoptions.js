@@ -11,9 +11,7 @@ async function fetchWorkoutTimes() {
     const workoutTimes = await response.json();
     return workoutTimes;
 }
-// buildWorkoutOptions.js
 
-// Existing imports...
 
 async function fetchUserGenerated(){
     const response = await fetch('/isUserGenerated');
@@ -74,7 +72,7 @@ export async function initOptions() {
 
 export function addWorkout(workoutName, duration) {
     let addedItemId = nextItemId + 1;
-    const container = document.getElementById('options'); // Get the container where you want to add divs
+    const container = document.getElementById('options');
     const className = 'workoutItem--created'
         
     const newActivity = document.createElement('div');

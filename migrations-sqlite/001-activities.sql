@@ -31,5 +31,5 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 INSERT INTO users(id, user_name, user_password) VALUES
-('e7a55620-f98f-11ee-bbc3-325096b39f47', 'Marco', 'admin'),
+('e7a55620-f98f-11ee-bbc3-325096b39f47', 'Hey', 'admin'),
 ('ed3403d4-f98f-11ee-862e-325096b39f47', 'User', 'user');

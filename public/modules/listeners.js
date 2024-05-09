@@ -102,7 +102,6 @@ export function saveBtn(){
     browserDiv.classList.toggle("browse--hidden");
   };
 
-  // Event listener for both buttons
   browseButton.addEventListener('click', handleToggle);
   browserDiv.addEventListener('click', (event) => {
     if (event.target.id === "browseExit") {
@@ -125,7 +124,6 @@ export async function addBtn() {
           }
       } while (!workoutName);
 
-      // Validate duration
       do {
           const durationInput = prompt(`Enter the duration (in seconds) for ${workoutName} (or click cancel to cancel):`);
           if (durationInput === null) {
@@ -140,7 +138,6 @@ export async function addBtn() {
       
       description = prompt(`Enter a description for ${workoutName} (optional):`);
 
-      
       try {
           const response = await fetch('/addActivity', {
               method: 'POST',
@@ -156,7 +153,7 @@ export async function addBtn() {
 
           if (response.ok) {
               console.log('Activity added successfully');
-              // After adding the activity, refresh the options
+              // fix this idk after adding the activity, refresh the options [done]
               await refreshOptions();
           } else {
               console.error('Error adding activity');
