@@ -12,6 +12,7 @@ I designed it to be a stopwatch centric app that is stylized with an 'arcade-y' 
 - [Installation](#installation)
 - [How To Use](#how-to-use)
 - [AI](#ai)
+- [Credits](#credits)
 
  
 ## Key Features
@@ -111,7 +112,7 @@ At the very top of the stopwatch menu there is an arrow down button. This will t
     - Difficulty: Click or drag to set the difficulty. Lenient (easy), Standard (medium), Expert (hard). 
         - This will only modify the rest times
     - Add workout: Will prompt the user for the name, duration and description and will add that workout to the options.
-    
+
 - And finally, the confirm button.
     - Will only confirm if there is at least one activity in the playlist.
     - If deleted a playlist, it will reset the state to unconfirmed
@@ -148,5 +149,13 @@ Because of the way the options div displays each activity, the user will need to
 > How can i animate my stopwatch div to pulse every second?
 
 I thought that I would have to use JavaScript to animate the stop watch to pulse, but instead the AI introduced me to the **@key-frames** in css. To understand it more, I looked at the MDN docs for it and learnt how to make custom animations for my app. I then used this to make my own custom animations for the error buttons flashing red and for the drop down.
+
+# Credits
+
+Icons provided by: 
+- Google Material Icons: https://fonts.google.com/icons
+- Icons8: https://icons8.com/
+
+All audio effects are custom made by me using FL Studio 21
 
 ###
