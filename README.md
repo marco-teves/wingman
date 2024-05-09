@@ -151,6 +151,10 @@ Because of the way the options div displays each activity, the user will need to
 I thought that I would have to use JavaScript to animate the stop watch to pulse, but instead the AI introduced me to the **@key-frames** in css. To understand it more, I looked at the MDN docs for it and learnt how to make custom animations for my app. I then used this to make my own custom animations for the error buttons flashing red and for the drop down.
 
 # Credits
+Fonts Used: 
+
+- 'Pil Love': https://www.dafont.com/pil-love.font
+- 'Arial'
 
 Icons provided by: 
 - Google Material Icons: https://fonts.google.com/icons
