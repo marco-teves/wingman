@@ -11,6 +11,7 @@ I designed it to be a stopwatch centric app that is stylized with an 'arcade-y' 
     - [The Settings Menu](#the-settings-menu)
 - [Installation](#installation)
 - [How To Use](#how-to-use)
+- [Prototype vs Final Submission](#prototype-vs-final-submission)
 - [AI](#ai)
 - [Credits](#credits)
 
@@ -117,6 +118,37 @@ At the very top of the stopwatch menu there is an arrow down button. This will t
     - Will only confirm if there is at least one activity in the playlist.
     - If deleted a playlist, it will reset the state to unconfirmed
     - Will change the colour of the settings menu button toggle, the stopwatch colour and the next workout text colour to reflect the difficulty.
+
+
+## Prototype vs Final Submission
+
+I have greatly improved my final submission compared to my first prototype submission.
+
+### Missing / Under developed features : Prototype
+
+My prototype submission contained just the basic countdown and stopwatch page. The workout array was hard coded and the settings menu was extremley basic, with no way to actually utilize the front end to allow the user to make their own workout playlists. It also didnt support mobile users, i.e the css not appearing correctly on mobile and the drag and drop features not supporting touch.
+
+Workout items and times were also hard coded and did not have a database to store them in, nor did it have a functioning server to interact between the front and back end.
+
+### Improving the app
+
+I re designed the settings and went through multiple iterations to get to the final result.
+
+My philosophy that I go by is designing the interface based on what the user already knows. This means taking inspiration from other popular apps that the user may know, such as Spotify, YouTube and Instagram to name a few.
+
+- I took inspiration from Instagram's story bar at the top of their app, which eventually led to the ability to swipe left and right to view and browse all workout options in my app.
+- YouTube and Spotify's playlist inspired my own playlist feature as I felt it was a natural way to approach organizing a users workout playlist.
+- TikTok/Instagram Reels/ YouTube Shorts inspired the workout info menu in a sense that the user can swipe up and down to view each workout info.
+
+Added a server and database to send/recieve and store data between the client and database.
+
+I added a next workout preview inside the stopwatch circle to notify the user what their current and next workout is.
+
+Added social media share buttons to allow the user to flex on their friends, but only after they complete their workout.
+
+Improved the CSS to make the app style accordingly based on if the user is on mobile or desktop.
+
+Added touch functionality for mobile users when building their workout playlist.
 
 ## AI
 
