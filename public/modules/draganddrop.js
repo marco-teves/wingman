@@ -12,12 +12,12 @@ dropZone.addEventListener('drop', drop);
 export function dragStart(event) {
   console.log('item is dragging...');
   event.dataTransfer.setData('text', event.target.id);
-}
+};
   
 export function dragOver(event) {
   event.preventDefault();
   console.log('item is over drop zone...');
-}
+};
 
 export function drop(event) {
   event.preventDefault();
@@ -30,17 +30,17 @@ export function drop(event) {
     console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
     error.play();
     return;
-  }
+  };
 
   if (draggedItem) {
     const clone = draggedItem.cloneNode(true);
     const textContent = clone.textContent.trim();
-    console.log(`Item "${textContent}" dropped!`);
+    console.log(`Item '${textContent}' dropped!`);
     playlist.appendChild(clone);
   } else {
     console.error('Dragged item not found.');
-  }
-}
+  };
+};
 
 let isSwiping = false;
 let startTime;
@@ -51,7 +51,7 @@ export function touchStart(event) {
   startTime = Date.now();
   startX = event.touches[0].clientX;
   isSwiping = false;
-}
+};
 
 export function touchMove(event) {
   const currentX = event.touches[0].clientX;
@@ -59,8 +59,8 @@ export function touchMove(event) {
   if (Math.abs(currentX - startX) > movementThreshold) {
     console.log('swipe detected, wont put it in playlist');
     isSwiping = true;
-  }
-}
+  };
+};
 
 export function touchEnd(event) {
   const endTime = Date.now();
@@ -82,27 +82,27 @@ export function touchEnd(event) {
       console.log(`Maximum limit of ${maxItemsInPlaylist} items reached in the playlist.`);
       error.play();
       return;
-    }
+    };
 
     if (draggedItem) {
       const clone = draggedItem.cloneNode(true);
       const textContent = clone.textContent.trim();
-      console.log(`Item "${textContent}" added!`);
+      console.log(`Item '${textContent}' added!`);
       playlist.appendChild(clone);
     } else {
       console.error('Dragged item not found.');
-    }
+    };
   } else {
     console.log('Touch ended before 0.25 seconds.');
-  }
-}
+  };
+};
 
 
 export function deleteItem() {
   const playlist = document.querySelector('.playlist');
   while (playlist.firstChild) {
     playlist.removeChild(playlist.firstChild);
-  }
+  };
   click.play();
   console.log('All items deleted from the playlist.');
-}
+};

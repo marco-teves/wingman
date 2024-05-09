@@ -152,11 +152,11 @@ body::-webkit-scrollbar-thumb{
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
     }
     30% {
-        transform: scale(0.8) rotate(-1deg); /* Rotate slightly to the left */
+        transform: scale(0.8) rotate(-1deg);
         box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     }
     50% {
-        transform: scale(0.8) rotate(2deg); /* Rotate slightly to the right */
+        transform: scale(0.8) rotate(2deg);
     }
     100% {
         transform: scale(1) rotate(0deg);
@@ -311,11 +311,11 @@ body::-webkit-scrollbar-thumb{
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "tab"
-      "options"
-      "playlist"
-      "utility"
-      "confirm";
+      'tab'
+      'options'
+      'playlist'
+      'utility'
+      'confirm';
 }
 
 .tab{

@@ -5,7 +5,7 @@ export async function buildInfoBrowser() {
     const response = await fetch('/getInfoPageData');
     if (!response.ok) {
         throw new Error('Failed to fetch info page data');
-    }
+    };
     const infoPageData = await response.json();
     
     for (const activity of infoPageData) {
@@ -28,6 +28,6 @@ export async function buildInfoBrowser() {
         activityDiv.appendChild(descriptionParagraph);
 
         infoDiv.appendChild(activityDiv);
-    }
+    };
 };
 

@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <head>
-    <meta lang="en">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta lang='en'>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta
-      name="description"
-      content="High Interval Intensity Training stopwatch app">
+      name='description'
+      content='High Interval Intensity Training stopwatch app'>
     <title>wingman</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/flavicon.png">
+    <link rel='stylesheet' href='./styles.css'>
+    <link rel='icon' type='image/png' sizes='16x16' href='./assets/flavicon.png'>
   </head>
-<html lang="en">
+<html lang='en'>
   <body>
 <!--Load Screen-->
-<div class="loadScreen">
+<div class='loadScreen'>
   <h1>waking wingman up...</h1>
 </div>
 
 
 <!--Arrow Icon for Drop Down-->
-<div class="arrow-drop-down">
-  <svg id="arrow-ico" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
-    <path d="M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z"/>
+<div class='arrow-drop-down'>
+  <svg id='arrow-ico' xmlns='http://www.w3.org/2000/svg' height='48' viewBox='0 -960 960 960' width='48'>
+    <path d='M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z'/>
   </svg>
 </div>
 
 <!--Stopwatch-->
-<div class="stopwatchContainer">
-  <div class="pausedFx" id="pausedFx"></div>
-    <div id="stopwatch">
-    <div class="watchcircle">
+<div class='stopwatchContainer'>
+  <div class='pausedFx' id='pausedFx'></div>
+    <div id='stopwatch'>
+    <div class='watchcircle'>
       
-        <div class="circle-outline"  id="circle-outline">
-          <div class="middle-circle">
-            <div class="displayWorkout">
-              <p id="displayWorkoutName"></p>
-              <p id="displayNextWorkoutName"></p>
+        <div class='circle-outline'  id='circle-outline'>
+          <div class='middle-circle'>
+            <div class='displayWorkout'>
+              <p id='displayWorkoutName'></p>
+              <p id='displayNextWorkoutName'></p>
             </div>
           </div>
         </div>
       
       
     </div>
-    <div id="timer">--.--</div>
-    <div class="btn">
-      <button class="stopwatchBtn" id="playBtn" aria-label="Play Workout"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg></button> 
-      <button class="stopwatchBtn" id="pauseBtn" aria-label="Pause Workout"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z"/></svg></button>
+    <div id='timer'>--.--</div>
+    <div class='btn'>
+      <button class='stopwatchBtn' id='playBtn' aria-label='Play Workout'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z'/></svg></button> 
+      <button class='stopwatchBtn' id='pauseBtn' aria-label='Pause Workout'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z'/></svg></button>
     </div>
-    <div class="socialIcons">
-      <svg id="facebook" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px">    <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"/></svg>
-      <svg id="twitter" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"/></svg>
+    <div class='socialIcons'>
+      <svg id='facebook' xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 50 50' width='50px' height='50px'>    <path d='M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z'/></svg>
+      <svg id='twitter' xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 50 50' width='50px' height='50px'><path d='M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z'/></svg>
     </div>
   </div>
   </div>
   
 
 <!--Drop Down-->
-  <div class="dropDown">
-    <div class="settings">
+  <div class='dropDown'>
+    <div class='settings'>
       
-      <div class="workoutSummary">
-        <div class="tab">
-          <button id="infoTab">Workout Info</button>
+      <div class='workoutSummary'>
+        <div class='tab'>
+          <button id='infoTab'>Workout Info</button>
         </div>
-        <div class="playlist">
+        <div class='playlist'>
         </div>
 
-        <div class="options" id="options">
+        <div class='options' id='options'>
       
         </div>
           
-        <div class="utility">
+        <div class='utility'>
           
-          <button id="erase" aria-label="Delete Current Workout Playlist"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+          <button id='erase' aria-label='Delete Current Workout Playlist'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></button>
           <p>DIFFICULTY: </p>
-          <input type="range" min="1" max="3" value="1" class="slider" id="difficultySlider" aria-label="Difficulty Slider">
+          <input type='range' min='1' max='3' value='1' class='slider' id='difficultySlider' aria-label='Difficulty Slider'>
           
-          <!-- <button id="browse"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q146 0 255.5 91.5T872-559h-82q-19-73-68.5-130.5T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h80v120h-40L168-552q-3 18-5.5 36t-2.5 36q0 131 92 225t228 95v80Zm364-20L716-228q-21 12-45 20t-51 8q-75 0-127.5-52.5T440-380q0-75 52.5-127.5T620-560q75 0 127.5 52.5T800-380q0 27-8 51t-20 45l128 128-56 56ZM620-280q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Z"/></svg></button> -->
-          <button id="add"aria-label="Add New Workout"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
+          <!-- <button id='browse'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q146 0 255.5 91.5T872-559h-82q-19-73-68.5-130.5T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h80v120h-40L168-552q-3 18-5.5 36t-2.5 36q0 131 92 225t228 95v80Zm364-20L716-228q-21 12-45 20t-51 8q-75 0-127.5-52.5T440-380q0-75 52.5-127.5T620-560q75 0 127.5 52.5T800-380q0 27-8 51t-20 45l128 128-56 56ZM620-280q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Z'/></svg></button> -->
+          <button id='add'aria-label='Add New Workout'><svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'><path d='M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z'/></svg></button>
         </div>
 
-        <div class="confirm">
-          <button id="confirmWorkout">PRESS TO CONFIRM</button>
+        <div class='confirm'>
+          <button id='confirmWorkout'>PRESS TO CONFIRM</button>
         </div>
       </div>
       
     </div>
-    <div class="browse--hidden">
+    <div class='browse--hidden'>
       
-      <div class="browseInfo" id="browseInfo">
-        <template id="playlistOptionsTemplate">
-        <div class="workoutDescriptions">
-          <p id="workoutInfoName">INSERT WORKOUT NAME</p>
-          <iframe id="iframe" src="https://www.youtube.com/embed/I9fsqKE5XHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <p id="workoutInfoDescription">SUPER HELPFUL DESCRIPTION HERE iHPIHGUOEVLKNEIPGHJPIEJVPIJvkhvouihjvrivj[rwjv-9wevjovjirh oi ikpr </p>
+      <div class='browseInfo' id='browseInfo'>
+        <template id='playlistOptionsTemplate'>
+        <div class='workoutDescriptions'>
+          <p id='workoutInfoName'>INSERT WORKOUT NAME</p>
+          <iframe id='iframe' src='https://www.youtube.com/embed/I9fsqKE5XHo' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
+          <p id='workoutInfoDescription'>SUPER HELPFUL DESCRIPTION HERE iHPIHGUOEVLKNEIPGHJPIEJVPIJvkhvouihjvrivj[rwjv-9wevjovjirh oi ikpr </p>
         </div>
       </template>
       </div>
-      <div class="exit">
-        <button id="browseExit">^BACK TO SETTINGS^</button>
+      <div class='exit'>
+        <button id='browseExit'>^BACK TO SETTINGS^</button>
       </div>
     </div>
   </div>
-  <script src="./main.js" type="module"></script>
+  <script src='./main.js' type='module'></script>
 </body>
 </html>
 

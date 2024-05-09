@@ -7,23 +7,23 @@ export let isRunning = false;
 export let notCompleted = true;
 export let isPaused = false;
 
-const circle = document.querySelector(".circle-outline");
+const circle = document.querySelector('.circle-outline');
 let workoutArr = exerciseArr;
 let displayName = namedArr;
 
 export function updateWorkoutArr() {
   workoutArr = exerciseArr;
-}
+};
 export function updateNamedArr() {
   displayName = namedArr;
-}
+};
 
 export async function startCountdown() {
   const timerElem = document.getElementById('timer');
   const displayNameElem = document.getElementById('displayWorkoutName');
   const displayNextNameElem = document.getElementById('displayNextWorkoutName');
   const socialIcons = document.querySelector('.socialIcons');
-  circle.classList.toggle("pulse");
+  circle.classList.toggle('pulse');
 
   if (!isRunning) {
     let workoutIndex = 0;
@@ -41,20 +41,20 @@ export async function startCountdown() {
         displayNextNameElem.innerText = displayName[displayNameIndex + 1];
       } else {
         displayNextNameElem.innerText = '';
-      }
+      };
 
       displayNameText = displayName[displayNameIndex];
       displayNameElem.innerText = displayNameText;
 
       if (workoutIndex % 2 === 0 && workoutIndex !== 0) {
         restWarn.play();
-      }
+      };
       if (workoutIndex === 0) {
         getReady.play();
-      } 
+      }; 
       if (workoutIndex !== 0 && workoutIndex !== 1  && workoutIndex % 2 !== 0){
         nextWorkout.play();
-      }
+      };
 
       const countdownInterval = setInterval(() => {
         if (!isPaused) {
@@ -66,7 +66,7 @@ export async function startCountdown() {
           } else if (seconds <= 10 && seconds >= 9.99) {
             timerElem.style.color = 'yellow';
             tenSecWarn.play();
-          }
+          };
           document.getElementById('timer').innerText = formatTime(seconds);
 
           if (seconds <= 0) {
@@ -86,19 +86,19 @@ export async function startCountdown() {
               timerElem.style.color = 'white';
               finishWarn.play();
               isRunning = false;
-              circle.classList.toggle("pulse");
+              circle.classList.toggle('pulse');
               notCompleted = false;
               socialIcons.style.fill = '';
               socialIcons.style.fill = 'green';
-            }
-          }
-        }
+            };
+          };
+        };
       }, 10);
-    }
+    };
 
     countdown();
-  }
-}
+  };
+};
 
 
 const pauseBtn = document.getElementById('pauseBtn');
@@ -109,20 +109,20 @@ pauseBtn.addEventListener('click', () => {
     if (isPaused) {
       isPaused = false;
       unpause.play();
-      circle.classList.toggle("pulse");
-      pausedFx.classList.add("pausedFx");
-      pausedFx.classList.remove("pausedFx--active");
+      circle.classList.toggle('pulse');
+      pausedFx.classList.add('pausedFx');
+      pausedFx.classList.remove('pausedFx--active');
     } else {
       isPaused = true;
       pause.play();
-      circle.classList.toggle("pulse");
-      pausedFx.classList.remove("pausedFx");
-      pausedFx.classList.add("pausedFx--active");
-    }
-  }
+      circle.classList.toggle('pulse');
+      pausedFx.classList.remove('pausedFx');
+      pausedFx.classList.add('pausedFx--active');
+    };
+  };
 });
 
 export function formatTime(timeInSeconds) {
-    const formattedTime = Math.max(0, timeInSeconds).toFixed(2);
-    return formattedTime;
-}
+  const formattedTime = Math.max(0, timeInSeconds).toFixed(2);
+  return formattedTime;
+};

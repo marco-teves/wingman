@@ -1,5 +1,5 @@
-import { click } from "./audio.js";
-import { difficultyNames } from "./difficulties.js";
+import { click } from './audio.js';
+import { difficultyNames } from './difficulties.js';
 
 
 export function scrollLeftRight() {
@@ -12,9 +12,9 @@ export function scrollLeftRight() {
             behavior: 'smooth'
         });
         event.preventDefault();
-        }
+        };
     });
-}
+};
 
 export function adjustDifficultySlider() {
     const slider = document.getElementById('difficultySlider');
@@ -25,16 +25,16 @@ export function adjustDifficultySlider() {
         if (slider.value === '1') {
             slider.style.setProperty('--thumb-color', 'green');
             confirmBtn.style.setProperty('--btn-color', 'green');
-            console.log("Difficulty level:", difficultyName);
+            console.log('Difficulty level:', difficultyName);
         } else if (slider.value === '2') {
             slider.style.setProperty('--thumb-color', 'yellow');
             confirmBtn.style.setProperty('--btn-color', 'yellow');
-            console.log("Difficulty level:", difficultyName);
+            console.log('Difficulty level:', difficultyName);
         } else if (slider.value === '3') {
             slider.style.setProperty('--thumb-color', 'red');
             confirmBtn.style.setProperty('--btn-color', 'red');
-            console.log("Difficulty level:", difficultyName);
-        }
+            console.log('Difficulty level:', difficultyName);
+        };
     });
 };
 

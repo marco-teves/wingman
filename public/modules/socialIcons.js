@@ -6,7 +6,7 @@ export function addSocialShare() {
     namedArr.forEach((exercise) => {
         if (exercise !== 'get ready!' && exercise !== 'rest') {
             presentedArr += `${exercise}, `;
-        }
+        };
     });
     
     let message = `Check out this workout I just created and completed with Wingman! ${encodeURIComponent('\n')}${presentedArr} with the difficulty level set to ${getDifficultyName} ${encodeURIComponent('\n')}Make your own at`;
@@ -18,4 +18,4 @@ export function addSocialShare() {
     facebook.addEventListener('click', () => {
         window.open(facebookLink, '_blank')
     });
-}
+};

@@ -58,15 +58,14 @@ export async function initOptions() {
                 initActivity.appendChild(workoutDurationTag);
             } else {
                 console.log('Could not find duration for workout:', workoutName);
-            }
-
+            };
             container.appendChild(initActivity);
             nextItemId++;
-        }
+        };
     } catch (error) {
         console.error('Error initializing options:', error);
-    }
-}
+    };
+};
 
 
 
@@ -99,5 +98,5 @@ export function addWorkout(workoutName, duration) {
     newActivity.addEventListener('touchmove', touchMove);
     newActivity.addEventListener('touchend', touchEnd);
     
-}
+};
 

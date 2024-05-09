@@ -62,6 +62,12 @@ This menu will be revealed as soon as the user clicks on the arrow button. This 
 
     - **Difficulty Slider** will set the difficulty of the session, adjusting the time allowed for rests. When the confirm button is pressed, the Stop Watch UI will change colour to reflect on the difficulty.
         - **Justification:** Wanted a more intuitive user experiece, difficulty are color coded. However, this assumes that the user is not colourblind and does not have any setting to change colour.
+    - Difficulty Times:
+        - lenient: 60s rest
+        - Standard: 45s rest
+        - EXPERT: 15s rest
+
+        
 
     - **Add Workout Button** will allow the user to add a custom workout activity. Will display a pop up asking the user to fill out the workout name, duration and description.
         - **Justification:** Because it is located in the utility bar, In my opinion this makes editing and adding activities more streamlined. (this applies to all buttons in the utility bar)

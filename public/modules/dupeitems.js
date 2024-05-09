@@ -8,11 +8,11 @@ export function dupeWorkoutItems(workoutNames) {
             const workoutNameElement = clone.querySelector('#workoutName');
             workoutNameElement.textContent = workoutNames[i];
             options.appendChild(clone);
-        }
+        };
     } else {
-        console.error("Workout item template not found.");
-    }
-}
+        console.error('Workout item template not found.');
+    };
+};
 
 export function dupeWorkoutSlots() {
     const template = document.getElementById('workoutSlotsTemplate');
@@ -21,5 +21,5 @@ export function dupeWorkoutSlots() {
     for (let i = 0; i < 6; i++) {
         const clone = document.importNode(template.content, true);
         workoutPlan.appendChild(clone);
-    }  
-}
+    }; 
+};

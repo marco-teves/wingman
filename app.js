@@ -18,7 +18,7 @@ app.get('/activities', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching activities');
-    }
+    };
 });
 
 app.get('/activityTimes', async (req, res) => {
@@ -27,7 +27,7 @@ app.get('/activityTimes', async (req, res) => {
         res.json(activities);
     } catch (error) {
         res.status(500).send('Error fetching activities');
-    }
+    };
 });
 
 app.get('/workoutTimes', async (req, res) => {
@@ -36,13 +36,13 @@ app.get('/workoutTimes', async (req, res) => {
       const workoutTimes = {};
       activities.forEach(activity => {
           workoutTimes[activity.activity_name] = activity.activity_duration;
-      });
+    });
       console.log('Workout times fetched from database:', workoutTimes);
         res.json(workoutTimes);
-  } catch (error) {
+    } catch (error) {
       console.error(error);
       res.status(500).send('Error fetching workout times');
-  }
+    };
 });
 
 app.get('/isUserGenerated', async (req, res) => {
@@ -52,7 +52,7 @@ app.get('/isUserGenerated', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching isUserGenerated data');
-    }
+    };
 });
 
 app.get('/getInfoPageData', async (req, res) => {
@@ -62,7 +62,7 @@ app.get('/getInfoPageData', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching info page data');
-    }
+    };
 });
 
 //post
@@ -76,7 +76,7 @@ app.post('/addActivity', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error adding activity');
-    }
+    };
 });
 
 app.use((req, res) => {
