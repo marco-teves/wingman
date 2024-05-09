@@ -7,11 +7,11 @@ I designed it to be a stopwatch centric app that is stylized with an 'arcade-y' 
 # Table of contents
 - [Key Features](#key-features)
    
-    - [The Stopwatch Page](###the-stopwatch-page)
-    - [The Settings Menu](###the-settings-menu)
-- [Installation](##installation)
-- [How To Use](##how-to-use)
-- [AI](##ai)
+    - [The Stopwatch Page](#the-stopwatch-page)
+    - [The Settings Menu](#the-settings-menu)
+- [Installation](#installation)
+- [How To Use](#how-to-use)
+- [AI](#ai)
 
  
 ## Key Features
