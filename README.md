@@ -1,5 +1,19 @@
 # wingman HIIT up2109236
 
+Introducing wingman, a High Intensity Interval Training app.
+
+I designed it to be a stopwatch centric app that is stylized with an 'arcade-y' theme.
+
+# Table of contents
+- [Key Features](#key-features)
+   
+    - [The Stopwatch Page](#the-stopwatch-page)
+    - [The Settings Menu](#the-settings-menu)
+- [Installation](#installation)
+- [How To Use](#how-to-use)
+- [AI](#ai)
+- [Credits](#credits)
+
  
 ## Key Features
 
@@ -53,7 +67,7 @@ This menu will be revealed as soon as the user clicks on the arrow button. This 
 
 - The **Confirm Button** will read all the workout items inside the playlist, and will send it to the stopwatch. Initially it is greyed out, telling the user that they would need to fill out the playlist first. To make sure the user does so, when pressed it will flash red and play an error sound to indicate the playlist is empty. The button will turn green if there are workouts in the playlist. Users will be able to change the workouts and re-confirm to update the playlist.
 
-## How to use
+## Installation
 
 1) after downloading folder, run ``` cd wingman ``` to connect to the folder
 2) then run ``` npm install i ``` to install node modules
@@ -70,7 +84,39 @@ This menu will be revealed as soon as the user clicks on the arrow button. This 
 
 5) If you wish to exit the server, in your terminal CTRL + C to close the server.
 
+## How to use
 
+**Stop Watch**
+
+Upon visiting localhost:8080, you will be greeted by the stop watch menu.
+
+- Initially the stop watch circle will be greyed out, clicking on the start and pause button will do nothing and clicking on the social media icons will alert the user to complete a workout first.
+
+**Settings menu**
+
+At the very top of the stopwatch menu there is an arrow down button. This will toggle the settings menu.
+
+- At the very top, there is the workout info button that will display each workout name, duration and description currently in the wingman database.
+
+-  Directly below it is the workout options: 
+    - **Scroll Up/Down** or **Swipe Left/Right** to browse all the available workout activities.
+    - Activities coloured **white** are **default activities**
+    - Activities coloured **green** are **user-generated activities**
+
+- Below that is the workout playlist. While it can have an infinite amount of activities, I have set the limit to **15 activities**
+    - On desktop: **Drag and drop** to add an item to the playlist
+    - On mobile: **Touch and hold** for more than 250 ms to add the item
+
+- Following the playlist, the next part is the utility bar.
+    - Delete button: Deletes all items from the playlist.
+    - Difficulty: Click or drag to set the difficulty. Lenient (easy), Standard (medium), Expert (hard). 
+        - This will only modify the rest times
+    - Add workout: Will prompt the user for the name, duration and description and will add that workout to the options.
+
+- And finally, the confirm button.
+    - Will only confirm if there is at least one activity in the playlist.
+    - If deleted a playlist, it will reset the state to unconfirmed
+    - Will change the colour of the settings menu button toggle, the stopwatch colour and the next workout text colour to reflect the difficulty.
 
 ## AI
 
@@ -103,5 +149,17 @@ Because of the way the options div displays each activity, the user will need to
 > How can i animate my stopwatch div to pulse every second?
 
 I thought that I would have to use JavaScript to animate the stop watch to pulse, but instead the AI introduced me to the **@key-frames** in css. To understand it more, I looked at the MDN docs for it and learnt how to make custom animations for my app. I then used this to make my own custom animations for the error buttons flashing red and for the drop down.
+
+# Credits
+Fonts Used: 
+
+- 'Pil Love': https://www.dafont.com/pil-love.font
+- 'Arial'
+
+Icons provided by: 
+- Google Material Icons: https://fonts.google.com/icons
+- Icons8: https://icons8.com/
+
+All audio effects are custom made by me using FL Studio 21
 
 ###
